@@ -1,0 +1,49 @@
+:root {
+  /* Surfaces */
+  --void: #08080d;
+  --obsidian: #050507;
+  --surface: #0c0c14;
+  --surface-2: #101019;
+
+  /* Brand */
+  --violet: #7c3aed;
+  --violet-soft: #a855f7;
+  --neon: #9b5cff;
+  --violet-deep: #3b176d;
+
+  /* Text */
+  --ink: #f5f3ff;
+  --ink-muted: #a7a3b5;
+  --ink-dim: #6f6b80;
+
+  /* Lines & glass */
+  --line: rgba(255, 255, 255, 0.1);
+  --line-soft: rgba(255, 255, 255, 0.06);
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-strong: rgba(255, 255, 255, 0.08);
+
+  /* Signals */
+  --danger: #fb7185;
+  --ok: #34d399;
+
+  /* Radii */
+  --r-xl: 32px;
+  --r-lg: 24px;
+  --r-md: 18px;
+  --r-sm: 12px;
+  --r-pill: 999px;
+
+  /* Glow & shadows */
+  --glow-sm: 0 8px 30px -12px rgba(155, 92, 255, 0.6);
+  --glow-md: 0 20px 60px -20px rgba(155, 92, 255, 0.65);
+  --glow-lg: 0 40px 120px -40px rgba(124, 58, 237, 0.75);
+  --shadow-card: 0 30px 80px -40px rgba(0, 0, 0, 0.9);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --header-h: 78px;
+  --font: "Vazirmatn Variable", "Vazirmatn", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
