@@ -4,17 +4,17 @@ export function NotFoundPage() {
   return (
     <div className="notfound">
       <div className="container notfound__inner">
-        <p className="eyebrow">404</p>
+        <p className="eyebrow">۴۰۴</p>
         <h1 className="page-title">
-          This room doesn’t <em>exist</em>
+          این اتاق <em>وجود ندارد</em>
         </h1>
         <p className="page-sub">
-          The page you were looking for has been moved, or perhaps never existed at all.
+          صفحه‌ای که دنبالش بودی جابه‌جا شده، یا شاید هرگز وجود نداشته است.
         </p>
         <div className="notfound__actions">
-          <ButtonLink href="/">Back home</ButtonLink>
+          <ButtonLink href="/">بازگشت به خانه</ButtonLink>
           <ButtonLink href="/shop" variant="outline">
-            Browse the shop
+            دیدن فروشگاه
           </ButtonLink>
         </div>
       </div>

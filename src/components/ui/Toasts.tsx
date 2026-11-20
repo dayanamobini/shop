@@ -20,7 +20,7 @@ export function Toasts() {
             type="button"
             className="toast__close"
             onClick={() => dismissToast(toast.id)}
-            aria-label="Dismiss notification"
+            aria-label="بستن اعلان"
           >
             <Icon name="close" size={14} />
           </button>

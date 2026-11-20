@@ -44,3 +44,21 @@ docker compose -f docker-compose.base44.yml exec -T web sh -lc "npm run lint"
   `src/data/products.ts` in sync when swapping photography.
 - Checkout is a demonstration flow: it validates the form and shows an order
   confirmation, but takes no payment and stores nothing.
+
+## Persian / RTL notes
+
+- The storefront is Persian and RTL: `<html lang="fa" dir="rtl">`. Typography uses
+  Vazirmatn (UI/body) and Markazi Text (display headings), loaded from Google Fonts
+  in `index.html`.
+- CSS uses logical properties (`inset-inline-*`, `margin-inline-*`,
+  `padding-inline-*`, `border-inline-*`) so layouts mirror automatically. Prefer
+  them over physical `left`/`right` in new rules.
+- Never add `letter-spacing` to Persian copy — it breaks the connected script.
+- Directional icons (`arrow-right`, `chevron-*`, `return`, `arrow-up-right`) are
+  mirrored in `Icon.tsx` via `.icon--flip`; the carousel flips its scroll delta for RTL.
+- Full-screen overlays are anchored with `right: 0; width: 100vw` instead of
+  `inset: 0`: in RTL the fixed containing block can include the classic scrollbar
+  gutter and would push the overlay off-screen.
+- Prices are stored in Toman; `money()` / `faNum()` in `src/lib/format.ts` render
+  Persian digits. Catalogue keys (`Category`, `CollectionId`, badges) stay English
+  and are displayed through `src/data/labels.ts`.

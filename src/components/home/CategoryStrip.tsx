@@ -10,13 +10,13 @@ export function CategoryStrip() {
       <div className="container">
         <Reveal className="cats__head">
           <div>
-            <p className="eyebrow">Browse the house</p>
+            <p className="eyebrow">مروری بر خانه</p>
             <h2 className="cats__title" id="cats-title">
-              Shop by Category
+              خرید بر اساس دسته‌بندی
             </h2>
           </div>
           <ButtonLink href="/shop" variant="ghost" size="sm" icon="arrow-right">
-            All categories
+            همه دسته‌بندی‌ها
           </ButtonLink>
         </Reveal>
 

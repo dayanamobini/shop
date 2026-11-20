@@ -22,7 +22,7 @@ export function MobileMenu() {
         className="menu-panel"
         role="dialog"
         aria-modal="true"
-        aria-label="Site menu"
+        aria-label="منوی سایت"
         onMouseDown={(event) => event.stopPropagation()}
       >
         <div className="menu-panel__head">
@@ -33,13 +33,13 @@ export function MobileMenu() {
             type="button"
             className="icon-btn"
             onClick={() => setMenuOpen(false)}
-            aria-label="Close menu"
+            aria-label="بستن منو"
           >
             <Icon name="close" />
           </button>
         </div>
 
-        <nav aria-label="Mobile">
+        <nav aria-label="منوی موبایل">
           <ul className="menu-panel__links">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
@@ -60,7 +60,7 @@ export function MobileMenu() {
 
         <div className="menu-panel__grid">
           <div>
-            <p className="eyebrow">Shop by category</p>
+            <p className="eyebrow">خرید بر اساس دسته</p>
             <ul className="menu-panel__small">
               {SHOP_CATEGORIES.map((category) => (
                 <li key={category.name}>
@@ -78,7 +78,7 @@ export function MobileMenu() {
             </ul>
           </div>
           <div>
-            <p className="eyebrow">Collections</p>
+            <p className="eyebrow">کالکشن‌ها</p>
             <ul className="menu-panel__small">
               {COLLECTIONS.map((collection) => (
                 <li key={collection.id}>
@@ -107,7 +107,7 @@ export function MobileMenu() {
             }}
           >
             <Icon name="search" size={15} />
-            <span>Search</span>
+            <span>جست‌وجو</span>
           </button>
           <button
             type="button"
@@ -118,7 +118,7 @@ export function MobileMenu() {
             }}
           >
             <Icon name="bag" size={15} />
-            <span>Cart</span>
+            <span>سبد خرید</span>
           </button>
           <button
             type="button"
@@ -126,12 +126,12 @@ export function MobileMenu() {
             onClick={() => go('/wishlist')}
           >
             <Icon name="heart" size={15} />
-            <span>Wishlist{wishlist.length ? ` (${wishlist.length})` : ''}</span>
+            <span>علاقه‌مندی‌ها{wishlist.length ? ` (${wishlist.length})` : ''}</span>
           </button>
         </div>
 
         <p className="menu-panel__note">
-          DreamDécor · Objects for beautiful living
+          دریم‌دکور · اشیائی برای زندگی زیبا
           <br />
           hello@dreamdecor.studio
         </p>

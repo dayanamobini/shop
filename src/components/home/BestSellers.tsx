@@ -4,12 +4,12 @@ import { ProductGrid } from '../product/ProductGrid'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const FILTERS: { label: string; value: 'All' | Category }[] = [
-  { label: 'All', value: 'All' },
-  { label: 'Lighting', value: 'Lighting' },
-  { label: 'Decor', value: 'Decor' },
-  { label: 'Vases', value: 'Vases' },
-  { label: 'Sculptures', value: 'Sculptures' },
-  { label: 'Textiles', value: 'Textiles' },
+  { label: 'همه', value: 'All' },
+  { label: 'نورپردازی', value: 'Lighting' },
+  { label: 'دکور', value: 'Decor' },
+  { label: 'گلدان', value: 'Vases' },
+  { label: 'مجسمه', value: 'Sculptures' },
+  { label: 'منسوجات', value: 'Textiles' },
 ]
 
 export function BestSellers() {
@@ -26,13 +26,13 @@ export function BestSellers() {
     <section className="section bestsellers" aria-labelledby="bestsellers-title">
       <div className="container">
         <SectionHeading
-          eyebrow="Most loved"
-          title={<span id="bestsellers-title">Best Sellers</span>}
-          copy="The pieces our customers keep coming back for — and gifting."
-          action={{ label: 'Shop best sellers', href: '/shop?sort=rating' }}
+          eyebrow="محبوب‌ترین"
+          title={<span id="bestsellers-title">محبوب‌ترین‌ها</span>}
+          copy="قطعاتی که مشتریان ما دوباره به سراغشان برمی‌گردند — و هدیه می‌دهند."
+          action={{ label: 'خرید پرفروش‌ها', href: '/shop?sort=rating' }}
         />
 
-        <div className="pills" role="tablist" aria-label="Filter best sellers by category">
+        <div className="pills" role="tablist" aria-label="پالایش پرفروش‌ها بر اساس دسته">
           {FILTERS.map((item) => (
             <button
               key={item.value}

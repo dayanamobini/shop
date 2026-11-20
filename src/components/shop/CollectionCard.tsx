@@ -48,7 +48,7 @@ export function CollectionCard({
           <span className="collection__name">{collection.name}</span>
           <span className="collection__desc">{collection.description}</span>
           <span className="collection__cta">
-            Explore <Icon name="arrow-up-right" size={15} />
+            مشاهده <Icon name="arrow-up-right" size={15} />
           </span>
         </span>
       </a>

@@ -5,31 +5,31 @@ import { useStore } from '../../store/StoreContext'
 import { Icon, type IconName } from '../ui/Icon'
 
 const shopLinks = [
-  { label: 'All Products', href: '/shop' },
-  { label: 'New Arrivals', href: '/shop?sort=newest' },
-  { label: 'Best Sellers', href: '/shop?sort=rating' },
-  { label: 'Sale', href: '/shop?sale=1' },
+  { label: 'همه محصولات', href: '/shop' },
+  { label: 'جدیدترین‌ها', href: '/shop?sort=newest' },
+  { label: 'پرفروش‌ها', href: '/shop?sort=rating' },
+  { label: 'تخفیف‌ها', href: '/shop?sale=1' },
 ]
 
 const aboutLinks = [
-  { label: 'Our Story', href: '/about' },
-  { label: 'Sustainability', href: '/about#values' },
-  { label: 'Artisans', href: '/about#artisans' },
-  { label: 'Press', href: '/inspiration' },
+  { label: 'داستان ما', href: '/about' },
+  { label: 'پایداری', href: '/about#values' },
+  { label: 'هنرمندان', href: '/about#artisans' },
+  { label: 'همکاری', href: '/inspiration' },
 ]
 
 const helpLinks = [
-  { label: 'FAQs', href: '/about#faq' },
-  { label: 'Shipping', href: '/about#shipping' },
-  { label: 'Returns', href: '/about#shipping' },
-  { label: 'Contact', href: '/about#contact' },
+  { label: 'سؤالات متداول', href: '/about#faq' },
+  { label: 'روش‌های ارسال', href: '/about#shipping' },
+  { label: 'شرایط بازگشت', href: '/about#shipping' },
+  { label: 'تماس با ما', href: '/about#contact' },
 ]
 
 const socials: { name: IconName; label: string; href: string }[] = [
-  { name: 'instagram', label: 'Instagram', href: 'https://instagram.com' },
-  { name: 'pinterest', label: 'Pinterest', href: 'https://pinterest.com' },
-  { name: 'facebook', label: 'Facebook', href: 'https://facebook.com' },
-  { name: 'youtube', label: 'YouTube', href: 'https://youtube.com' },
+  { name: 'instagram', label: 'اینستاگرام', href: 'https://instagram.com' },
+  { name: 'pinterest', label: 'پینترست', href: 'https://pinterest.com' },
+  { name: 'facebook', label: 'فیسبوک', href: 'https://facebook.com' },
+  { name: 'youtube', label: 'یوتیوب', href: 'https://youtube.com' },
 ]
 
 export function Footer() {
@@ -51,8 +51,8 @@ export function Footer() {
               Dream<span>Décor</span>
             </span>
             <p className="footer__desc">
-              Curated objects for extraordinary living. Handmade, quietly imperfect, and chosen to
-              be lived with for years.
+              گزیده‌ای از اشیاء برای زندگی استثنایی. دست‌ساز، آرام و کمی ناکامل، و انتخاب‌شده تا
+              سال‌ها با آن زندگی کنید.
             </p>
             <div className="footer__social">
               {socials.map((social) => (
@@ -69,9 +69,9 @@ export function Footer() {
             </div>
           </div>
 
-          <nav className="footer__cols" aria-label="Footer">
+          <nav className="footer__cols" aria-label="پیوندهای پابرگ">
             <div>
-              <p className="footer__title">Shop</p>
+              <p className="footer__title">فروشگاه</p>
               <ul>
                 {shopLinks.map((link) => (
                   <li key={link.label}>
@@ -83,7 +83,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="footer__title">About</p>
+              <p className="footer__title">درباره ما</p>
               <ul>
                 {aboutLinks.map((link) => (
                   <li key={link.label}>
@@ -95,7 +95,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="footer__title">Help</p>
+              <p className="footer__title">راهنما</p>
               <ul>
                 {helpLinks.map((link) => (
                   <li key={link.label}>
@@ -109,31 +109,31 @@ export function Footer() {
           </nav>
 
           <div className="footer__news">
-            <p className="footer__title">The Sunday Edit</p>
+            <p className="footer__title">خبرنامه‌ی یکشنبه</p>
             <p className="footer__news-copy">
-              Décor inspiration, new arrivals and quiet offers — once a week.
+              الهام دکوراسیون، محصولات تازه و پیشنهادهای آرام — هفته‌ای یک ایمیل.
             </p>
             <form
               className="footer__form"
               onSubmit={(event) => {
                 event.preventDefault()
                 if (!email.trim()) return
-                notify('You’re on the list.', 'Look out for The Sunday Edit.')
+                notify('به فهرست ما خوش آمدید.', 'منتظر خبرنامه‌ی یکشنبه باش.')
                 setEmail('')
               }}
             >
               <label className="sr-only" htmlFor="footer-email">
-                Email address
+                نشانی ایمیل
               </label>
               <input
                 id="footer-email"
                 type="email"
                 required
-                placeholder="Your email"
+                placeholder="ایمیل شما"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
               />
-              <button type="submit" aria-label="Subscribe">
+              <button type="submit" aria-label="عضویت در خبرنامه">
                 <Icon name="arrow-right" size={17} />
               </button>
             </form>
@@ -151,17 +151,17 @@ export function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>© {new Date().getFullYear()} DreamDécor Studio. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} استودیو دریم‌دکور. تمام حقوق محفوظ است.</p>
           <p className="footer__legal">
             <a href="/about" onClick={go('/about')}>
-              Privacy
+              حریم خصوصی
             </a>
             <span aria-hidden="true">·</span>
             <a href="/about" onClick={go('/about')}>
-              Terms
+              شرایط استفاده
             </a>
             <span aria-hidden="true">·</span>
-            <span>Designed in Lisbon, made by hand</span>
+            <span>طراحی در لیسبون، ساخته‌شده با دست</span>
           </p>
         </div>
       </div>

@@ -10,28 +10,28 @@ export function InspirationPage() {
   return (
     <div className="inspiration">
       <div className="container">
-        <Breadcrumbs items={[{ label: 'Inspiration' }]} />
+        <Breadcrumbs items={[{ label: 'مجله دکور' }]} />
       </div>
 
       <section className="inspiration-hero">
         <div className="container inspiration-hero__inner">
           <Reveal className="inspiration-hero__copy">
-            <p className="eyebrow">The DreamDécor Journal</p>
+            <p className="eyebrow">مجله‌ی دریم‌دکور</p>
             <h1 className="page-title">
-              Rooms to <em>Live In</em>
+              اتاق‌هایی برای <em>زندگی</em>
             </h1>
             <p className="page-sub">
-              Interiors, materials and small rituals — the thinking behind the objects we make and
-              the way we live with them.
+              فضاهای داخلی، مواد و آیین‌های کوچک — اندیشه‌ای که پشت اشیائی که می‌سازیم و شکلی که با
+              آن‌ها زندگی می‌کنیم.
             </p>
             <ButtonLink href="#chapters" variant="outline" icon="arrow-right">
-              Read the lookbook
+              خواندن لوک‌بوک
             </ButtonLink>
           </Reveal>
           <Reveal className="inspiration-hero__media" delay={0.1}>
             <Img
               photo={PHOTO.inspirationBanner}
-              alt="A sunlit interior with layered textiles and sculptural décor"
+              alt="فضای داخلی آفتاب‌گرفته با منسوجات لایه‌لایه و دکور مجسمه‌وار"
               sizes="(max-width: 767px) 92vw, 50vw"
               ratio={[4, 5]}
               eager
@@ -44,9 +44,9 @@ export function InspirationPage() {
         <div className="container">
           <Reveal className="section-head">
             <div className="section-head__text">
-              <p className="eyebrow">The Lookbook · Vol. 04</p>
+              <p className="eyebrow">لوک‌بوک · شماره ۰۴</p>
               <h2 className="section-head__title" id="chapters-title">
-                Style Beyond <em>Reality</em>
+                سبکی فراتر از <em>واقعیت</em>
               </h2>
             </div>
           </Reveal>
@@ -81,9 +81,9 @@ export function InspirationPage() {
         <div className="container">
           <Reveal className="section-head">
             <div className="section-head__text">
-              <p className="eyebrow">From the journal</p>
+              <p className="eyebrow">از مجله</p>
               <h2 className="section-head__title" id="stories-title">
-                Stories & <em>Notes</em>
+                داستان‌ها و <em>یادداشت‌ها</em>
               </h2>
             </div>
           </Reveal>
@@ -105,7 +105,7 @@ export function InspirationPage() {
                     </span>
                     <span className="story-card__title">{story.title}</span>
                     <span className="story-card__excerpt">{story.excerpt}</span>
-                    <span className="story-card__cta">Read the story →</span>
+                    <span className="story-card__cta">ادامه مطلب</span>
                   </span>
                 </a>
               </Reveal>

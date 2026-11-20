@@ -59,7 +59,7 @@ export default function App() {
     <StoreProvider>
       <ScrollManager />
       <a className="skip-link" href="#main">
-        Skip to content
+        رفتن به محتوای اصلی
       </a>
       <Header />
       <main id="main">

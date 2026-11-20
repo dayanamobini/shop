@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
-import { products } from '../data/products'
+import { products, type Category } from '../data/products'
+import { categoryLabel } from '../data/labels'
+import { PRICE_MAX } from '../lib/commerce'
+import { faNum } from '../lib/format'
 import { FilterPanel } from '../components/shop/FilterPanel'
 import { ProductGrid } from '../components/product/ProductGrid'
 import { Breadcrumbs } from '../components/ui/Breadcrumbs'
@@ -17,11 +20,11 @@ const MOOD_TO_COLLECTION: Record<string, string> = {
 }
 
 const SORT_OPTIONS = [
-  { value: 'featured', label: 'Featured' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'price-asc', label: 'Price: low to high' },
-  { value: 'price-desc', label: 'Price: high to low' },
-  { value: 'rating', label: 'Top rated' },
+  { value: 'featured', label: 'پیشنهاد ما' },
+  { value: 'newest', label: 'جدیدترین' },
+  { value: 'price-asc', label: 'ارزان‌ترین' },
+  { value: 'price-desc', label: 'گران‌ترین' },
+  { value: 'rating', label: 'بیشترین امتیاز' },
 ]
 
 const PAGE_SIZE = 8
@@ -36,7 +39,7 @@ export function ShopPage() {
   const sortParam = search.get('sort')
 
   const [selected, setSelected] = useState<string[]>(urlCategory ? [urlCategory] : [])
-  const [maxPrice, setMaxPrice] = useState(700)
+  const [maxPrice, setMaxPrice] = useState(PRICE_MAX)
   const [inStockOnly, setInStockOnly] = useState(false)
   const [sort, setSort] = useState(sortParam ?? 'featured')
   const [layout, setLayout] = useState<'grid' | 'list'>('grid')
@@ -82,7 +85,7 @@ export function ShopPage() {
 
   const shown = filtered.slice(0, visible)
   const activeFilters =
-    selected.length + (maxPrice < 700 ? 1 : 0) + (inStockOnly ? 1 : 0)
+    selected.length + (maxPrice < PRICE_MAX ? 1 : 0) + (inStockOnly ? 1 : 0)
 
   const toggleCategory = (category: string) => {
     setSelected((current) =>
@@ -94,17 +97,17 @@ export function ShopPage() {
 
   const clearAll = () => {
     setSelected([])
-    setMaxPrice(700)
+    setMaxPrice(PRICE_MAX)
     setInStockOnly(false)
   }
 
   const heading = urlCategory
-    ? urlCategory
+    ? categoryLabel(urlCategory as Category)
     : urlCollection
-      ? 'Curated collection'
+      ? 'کالکشن منتخب'
       : saleOnly
-        ? 'The Sale'
-        : 'The Shop'
+        ? 'تخفیف‌ها'
+        : 'فروشگاه'
 
   const filterProps = {
     selected,
@@ -121,19 +124,19 @@ export function ShopPage() {
     <div className="shop">
       <div className="shop__banner">
         <div className="container">
-          <Breadcrumbs items={[{ label: 'Shop' }]} />
+          <Breadcrumbs items={[{ label: 'فروشگاه' }]} />
           <Reveal className="shop__banner-inner">
-            <p className="eyebrow">Objects for beautiful living</p>
+            <p className="eyebrow">اشیائی برای زندگی زیبا</p>
             <h1 className="shop__title">{heading}</h1>
             <p className="shop__sub">
-              {filtered.length} pieces — handmade, hand-picked, and shipped from our studio.
+              {faNum(filtered.length)} قطعه — دست‌ساز، دست‌چین و ارسال‌شده از استودیوی ما.
             </p>
           </Reveal>
         </div>
       </div>
 
       <div className="container shop__layout">
-        <aside className="shop__aside" aria-label="Filters">
+        <aside className="shop__aside" aria-label="فیلترها">
           <FilterPanel {...filterProps} />
         </aside>
 
@@ -145,32 +148,30 @@ export function ShopPage() {
               onClick={() => setFiltersOpen(true)}
             >
               <Icon name="sliders" size={15} />
-              <span>Filters{activeFilters > 0 ? ` (${activeFilters})` : ''}</span>
+              <span>فیلترها{activeFilters > 0 ? ` (${faNum(activeFilters)})` : ''}</span>
             </button>
 
-            <p className="shop__result-count">
-              {filtered.length} {filtered.length === 1 ? 'piece' : 'pieces'}
-            </p>
+            <p className="shop__result-count">{faNum(filtered.length)} محصول</p>
 
             <div className="shop__tools">
               <label className="sort">
-                <span className="sr-only">Sort by</span>
+                <span className="sr-only">مرتب‌سازی بر اساس</span>
                 <select value={sort} onChange={(event) => setSort(event.target.value)}>
                   {SORT_OPTIONS.map((option) => (
                     <option key={option.value} value={option.value}>
-                      Sort: {option.label}
+                      مرتب‌سازی: {option.label}
                     </option>
                   ))}
                 </select>
                 <Icon name="chevron-down" size={14} />
               </label>
 
-              <div className="view-toggle" role="group" aria-label="Layout">
+              <div className="view-toggle" role="group" aria-label="نمایش">
                 <button
                   type="button"
                   className={layout === 'grid' ? 'is-active' : ''}
                   aria-pressed={layout === 'grid'}
-                  aria-label="Grid view"
+                  aria-label="نمایش شبکه‌ای"
                   onClick={() => setLayout('grid')}
                 >
                   <Icon name="grid" size={16} />
@@ -179,7 +180,7 @@ export function ShopPage() {
                   type="button"
                   className={layout === 'list' ? 'is-active' : ''}
                   aria-pressed={layout === 'list'}
-                  aria-label="List view"
+                  aria-label="نمایش فهرستی"
                   onClick={() => setLayout('list')}
                 >
                   <Icon name="list" size={16} />
@@ -193,10 +194,10 @@ export function ShopPage() {
               <span className="empty__icon">
                 <Icon name="search" size={26} />
               </span>
-              <p className="empty__title">No pieces match those filters.</p>
-              <p className="empty__text">Loosen a filter and the room opens up again.</p>
+              <p className="empty__title">هیچ محصولی با این فیلترها هم‌خوان نیست.</p>
+              <p className="empty__text">کمی فیلترها را باز کن؛ اتاق دوباره باز می‌شود.</p>
               <Button variant="outline" size="sm" onClick={clearAll}>
-                Clear filters
+                پاک کردن فیلترها
               </Button>
             </div>
           ) : (
@@ -207,10 +208,10 @@ export function ShopPage() {
               {visible < filtered.length && (
                 <div className="shop__more">
                   <Button variant="outline" onClick={() => setVisible((count) => count + PAGE_SIZE)}>
-                    Load more pieces
+                    نمایش محصولات بیشتر
                   </Button>
                   <span>
-                    Showing {shown.length} of {filtered.length}
+                    نمایش {faNum(shown.length)} از {faNum(filtered.length)}
                   </span>
                 </div>
               )}
@@ -222,12 +223,12 @@ export function ShopPage() {
       <Drawer
         open={filtersOpen}
         onClose={() => setFiltersOpen(false)}
-        title="Filters"
-        eyebrow={`${filtered.length} pieces`}
-        side="left"
+        title="فیلترها"
+        eyebrow={`${faNum(filtered.length)} محصول`}
+        side="start"
         footer={
           <Button fullWidth onClick={() => setFiltersOpen(false)}>
-            Show {filtered.length} pieces
+            نمایش {faNum(filtered.length)} محصول
           </Button>
         }
       >

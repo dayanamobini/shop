@@ -1,5 +1,6 @@
 import { getProductById } from '../../data/products'
-import { money } from '../../lib/format'
+import { FREE_SHIPPING_THRESHOLD } from '../../lib/commerce'
+import { faNum, money } from '../../lib/format'
 import { navigate } from '../../lib/hooks'
 import { useStore } from '../../store/StoreContext'
 import { Button, ButtonLink } from '../ui/Button'
@@ -20,28 +21,28 @@ export function MiniCart() {
     cartCount,
   } = useStore()
 
-  const remaining = Math.max(0, 99 - subtotal)
-  const progress = Math.min(100, (subtotal / 99) * 100)
+  const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal)
+  const progress = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100)
 
   return (
     <Drawer
       open={cartOpen}
       onClose={() => setCartOpen(false)}
-      eyebrow={`${cartCount} ${cartCount === 1 ? 'piece' : 'pieces'}`}
-      title="Your cart"
+      eyebrow={`${faNum(cartCount)} کالا`}
+      title="سبد خرید"
       footer={
         cart.length > 0 ? (
           <div className="minicart__summary">
             <div className="minicart__row">
-              <span>Subtotal</span>
+              <span>جمع کالاها</span>
               <span>{money(subtotal)}</span>
             </div>
             <div className="minicart__row">
-              <span>Shipping</span>
-              <span>{shipping === 0 ? 'Complimentary' : money(shipping)}</span>
+              <span>ارسال</span>
+              <span>{shipping === 0 ? 'رایگان' : money(shipping)}</span>
             </div>
             <div className="minicart__row minicart__row--total">
-              <span>Total</span>
+              <span>مبلغ نهایی</span>
               <span>{money(total)}</span>
             </div>
             <Button
@@ -51,7 +52,7 @@ export function MiniCart() {
                 navigate('/checkout')
               }}
             >
-              Checkout
+              ادامه پرداخت
             </Button>
             <ButtonLink
               href="/cart"
@@ -60,7 +61,7 @@ export function MiniCart() {
               fullWidth
               onClick={() => setCartOpen(false)}
             >
-              View full cart
+              مشاهده سبد خرید
             </ButtonLink>
           </div>
         ) : undefined
@@ -71,9 +72,9 @@ export function MiniCart() {
           <span className="empty__icon">
             <Icon name="bag" size={26} />
           </span>
-          <p className="empty__title">Your cart is currently dreaming of something beautiful.</p>
+          <p className="empty__title">سبد خریدت منتظر یک انتخاب زیباست.</p>
           <ButtonLink href="/shop" variant="outline" size="sm" onClick={() => setCartOpen(false)}>
-            Browse the shop
+            دیدن فروشگاه
           </ButtonLink>
         </div>
       ) : (
@@ -81,8 +82,8 @@ export function MiniCart() {
           <div className="ship-meter">
             <p>
               {remaining === 0
-                ? 'Complimentary shipping unlocked.'
-                : `${money(remaining)} away from complimentary shipping.`}
+                ? 'ارسال رایگان برای سفارش شما فعال شد.'
+                : `${money(remaining)} تا ارسال رایگان باقی مانده.`}
             </p>
             <span className="ship-meter__track">
               <span className="ship-meter__fill" style={{ width: `${progress}%` }} />
@@ -119,7 +120,7 @@ export function MiniCart() {
                         type="button"
                         className="minicart__remove"
                         onClick={() => removeLine(line.id, line.color)}
-                        aria-label={`Remove ${product.name} from cart`}
+                        aria-label={`حذف ${product.name} از سبد خرید`}
                       >
                         <Icon name="close" size={14} />
                       </button>
@@ -130,15 +131,15 @@ export function MiniCart() {
                         <button
                           type="button"
                           onClick={() => setQty(line.id, line.color, line.qty - 1)}
-                          aria-label="Decrease quantity"
+                          aria-label="کاهش تعداد"
                         >
                           <Icon name="minus" size={12} />
                         </button>
-                        <span>{line.qty}</span>
+                        <span>{faNum(line.qty)}</span>
                         <button
                           type="button"
                           onClick={() => setQty(line.id, line.color, line.qty + 1)}
-                          aria-label="Increase quantity"
+                          aria-label="افزایش تعداد"
                         >
                           <Icon name="plus" size={12} />
                         </button>

@@ -11,7 +11,7 @@ export function BrandStory() {
           <figure className="story__arch">
             <Img
               photo={PHOTO.story}
-              alt="An artisan’s studio with hand-finished ceramic pieces on a wooden workbench"
+              alt="استودیوی یک هنرمند با قطعات سرامیکی دست‌ساز روی میز کار چوبی"
               sizes="(max-width: 767px) 92vw, 46vw"
               ratio={[4, 5]}
             />
@@ -19,41 +19,41 @@ export function BrandStory() {
           <figure className="story__mini">
             <Img
               photo={PHOTO.storyFloat}
-              alt="A small sculptural object held in two hands"
+              alt="یک شیء مجسمه‌وار کوچک در دو دست"
               sizes="160px"
               ratio={[1, 1]}
               widths={[240, 360]}
             />
           </figure>
           <span className="story__stamp" aria-hidden="true">
-            <span>EST.</span>
-            <span>2014</span>
+            <span>از سال</span>
+            <span>۱۳۹۳</span>
           </span>
         </Reveal>
 
         <Reveal className="story__copy" delay={0.08}>
-          <p className="eyebrow">About DreamDécor</p>
+          <p className="eyebrow">درباره دریم‌دکور</p>
           <h2 className="story__title" id="story-title">
-            Objects With a <em>Story</em>
+            اشیایی با یک <em>داستان</em>
           </h2>
           <p className="story__lead">
-            DreamDécor curates artistic, functional and emotionally meaningful pieces for modern
-            homes.
+            در دریم‌دکور، هر قطعه با دقت انتخاب می‌شود تا میان زیبایی، کاربرد و احساسی که به خانه
+            می‌بخشد، تعادل ایجاد کند.
           </p>
           <p className="story__text">
-            We work directly with 120 makers across 24 countries — ceramicists, weavers,
-            stone-carvers and lighting studios — and pay them properly for the slow work they do.
-            Nothing here is mass-produced. Everything is chosen to be lived with, and then passed
-            on.
+            ما مستقیم با ۱۲۰ هنرمند در ۲۴ کشور کار می‌کنیم — سفالگران، بافندگان، سنگ‌تراشان و
+            استودیوهای نورپردازی — و برای کار آهسته‌ای که انجام می‌دهند، منصفانه می‌پردازیم.
+            هیچ‌چیز اینجا تولید انبوه نیست. همه‌چیز انتخاب شده تا با آن زندگی شود و سپس به دیگری
+            برسد.
           </p>
           <ButtonLink href="/about" size="lg" variant="outline" icon="arrow-right">
-            Discover Our Story
+            داستان ما را بخوانید
           </ButtonLink>
           <div className="story__signature">
             <span className="story__line" aria-hidden="true" />
             <p>
-              Elena Duarte
-              <span>Founder & Creative Director</span>
+              النا دوآرته
+              <span>بنیان‌گذار و مدیر خلاقیت</span>
             </p>
           </div>
         </Reveal>

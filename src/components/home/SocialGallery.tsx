@@ -10,9 +10,9 @@ export function SocialGallery() {
         <Reveal className="social__head">
           <p className="eyebrow">@dreamdecor.studio</p>
           <h2 className="social__title" id="social-title">
-            Follow the <em>Dream</em>
+            با ما <em>الهام</em> بگیر
           </h2>
-          <p className="social__copy">Daily inspiration for beautiful living.</p>
+          <p className="social__copy">ایده‌هایی برای زیباتر زندگی کردن.</p>
         </Reveal>
 
         <ul className="social__grid">

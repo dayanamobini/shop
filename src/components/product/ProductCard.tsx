@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import type { Product } from '../../data/products'
+import { badgeLabel, categoryLabel } from '../../data/labels'
 import { money } from '../../lib/format'
 import { navigate } from '../../lib/hooks'
 import { useStore } from '../../store/StoreContext'
@@ -31,7 +32,7 @@ export function ProductCard({ product, layout = 'grid' }: ProductCardProps) {
           className="pcard__media-link"
           href={`/product/${product.slug}`}
           onClick={open}
-          aria-label={`View ${product.name}`}
+          aria-label={`مشاهده ${product.name}`}
         >
           <span className="pcard__img pcard__img--main">
             <Img
@@ -51,13 +52,17 @@ export function ProductCard({ product, layout = 'grid' }: ProductCardProps) {
           </span>
         </a>
 
-        {product.badge && <span className="pcard__badge">{product.badge}</span>}
-        {!product.inStock && <span className="pcard__badge pcard__badge--muted">Sold out</span>}
+        {product.badge && <span className="pcard__badge">{badgeLabel(product.badge)}</span>}
+        {!product.inStock && <span className="pcard__badge pcard__badge--muted">ناموجود</span>}
 
         <button
           type="button"
           className={`pcard__wish${saved ? ' is-saved' : ''}${popping ? ' is-pop' : ''}`}
-          aria-label={saved ? `Remove ${product.name} from wishlist` : `Save ${product.name} to wishlist`}
+          aria-label={
+            saved
+              ? `حذف ${product.name} از علاقه‌مندی‌ها`
+              : `افزودن ${product.name} به علاقه‌مندی‌ها`
+          }
           aria-pressed={saved}
           onClick={() => {
             toggleWishlist(product.id)
@@ -76,7 +81,7 @@ export function ProductCard({ product, layout = 'grid' }: ProductCardProps) {
             onClick={() => setQuickViewId(product.id)}
           >
             <Icon name="eye" size={15} />
-            Quick view
+            مشاهده سریع
           </button>
           <button
             type="button"
@@ -85,13 +90,13 @@ export function ProductCard({ product, layout = 'grid' }: ProductCardProps) {
             onClick={() => addToCart(product)}
           >
             <Icon name="bag" size={15} />
-            {product.inStock ? 'Add to cart' : 'Sold out'}
+            {product.inStock ? 'افزودن به سبد' : 'ناموجود'}
           </button>
         </div>
       </div>
 
       <div className="pcard__info">
-        <p className="pcard__cat">{product.category}</p>
+        <p className="pcard__cat">{categoryLabel(product.category)}</p>
         <h3 className="pcard__name">
           <a href={`/product/${product.slug}`} onClick={open}>
             {product.name}
@@ -113,14 +118,14 @@ export function ProductCard({ product, layout = 'grid' }: ProductCardProps) {
               disabled={!product.inStock}
               onClick={() => addToCart(product)}
             >
-              Add to cart
+              افزودن به سبد
             </button>
             <button
               type="button"
               className="btn btn--ghost btn--sm"
               onClick={() => setQuickViewId(product.id)}
             >
-              Quick view
+              مشاهده سریع
             </button>
           </div>
         )}

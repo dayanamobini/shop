@@ -7,10 +7,10 @@ export function NewArrivals() {
     <section className="section section--cream arrivals" aria-labelledby="arrivals-title">
       <div className="container">
         <SectionHeading
-          eyebrow="Just landed"
-          title={<span id="arrivals-title">New Arrivals</span>}
-          copy="The newest pieces from our studios in Lisbon, Marrakech and Copenhagen."
-          action={{ label: 'Shop new in', href: '/shop?sort=newest' }}
+          eyebrow="تازه رسیده"
+          title={<span id="arrivals-title">تازه‌های دکور</span>}
+          copy="جدیدترین قطعات از استودیوهای ما در لیسبون، مراکش و کپنهاگ."
+          action={{ label: 'خرید تازه‌ها', href: '/shop?sort=newest' }}
         />
         <ProductCarousel products={newArrivals} />
       </div>

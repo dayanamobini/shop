@@ -1,5 +1,7 @@
 import { getProductById, products } from '../data/products'
-import { money } from '../lib/format'
+import { categoryLabel } from '../data/labels'
+import { FREE_SHIPPING_THRESHOLD } from '../lib/commerce'
+import { faNum, money } from '../lib/format'
 import { navigate } from '../lib/hooks'
 import { useStore } from '../store/StoreContext'
 import { Breadcrumbs } from '../components/ui/Breadcrumbs'
@@ -18,17 +20,15 @@ export function CartPage() {
   return (
     <div className="cart-page">
       <div className="container">
-        <Breadcrumbs items={[{ label: 'Cart' }]} />
+        <Breadcrumbs items={[{ label: 'سبد خرید' }]} />
         <div className="page-head page-head--row">
           <div>
-            <p className="eyebrow">Your selection</p>
+            <p className="eyebrow">انتخاب شما</p>
             <h1 className="page-title">
-              Shopping <em>Bag</em>
+              سبد <em>خرید</em>
             </h1>
           </div>
-          <p className="page-sub">
-            {cartCount} {cartCount === 1 ? 'piece' : 'pieces'} chosen
-          </p>
+          <p className="page-sub">{faNum(cartCount)} کالا انتخاب شده</p>
         </div>
 
         {lines.length === 0 ? (
@@ -36,19 +36,19 @@ export function CartPage() {
             <span className="empty__icon">
               <Icon name="bag" size={28} />
             </span>
-            <p className="empty__title">Your cart is currently dreaming of something beautiful.</p>
+            <p className="empty__title">سبد خریدت منتظر یک انتخاب زیباست.</p>
             <p className="empty__text">
-              Start with a sculpture, a lamp, or a vase — the rest tends to follow.
+              با یک مجسمه، یک چراغ یا یک گلدان شروع کن — بقیه‌اش خودش می‌آید.
             </p>
-            <ButtonLink href="/shop">Browse the shop</ButtonLink>
+            <ButtonLink href="/shop">دیدن فروشگاه</ButtonLink>
           </div>
         ) : (
           <div className="cart__layout">
             <div className="cart__lines">
               <div className="cart__head">
-                <span>Piece</span>
-                <span>Quantity</span>
-                <span>Total</span>
+                <span>کالا</span>
+                <span>تعداد</span>
+                <span>جمع</span>
               </div>
               {lines.map((line) => {
                 const product = line.product!
@@ -71,7 +71,7 @@ export function CartPage() {
                       />
                     </a>
                     <div className="cart__info">
-                      <p className="cart__cat">{product.category}</p>
+                      <p className="cart__cat">{categoryLabel(product.category)}</p>
                       <a
                         className="cart__name"
                         href={`/product/${product.slug}`}
@@ -83,13 +83,13 @@ export function CartPage() {
                         {product.name}
                       </a>
                       <p className="cart__variant">{line.color}</p>
-                      <p className="cart__unit">{money(product.price)} each</p>
+                      <p className="cart__unit">{money(product.price)} برای هر عدد</p>
                       <button
                         type="button"
                         className="link-btn cart__remove"
                         onClick={() => removeLine(line.id, line.color)}
                       >
-                        Remove
+                        حذف
                       </button>
                     </div>
                     <div className="cart__qty">
@@ -97,15 +97,15 @@ export function CartPage() {
                         <button
                           type="button"
                           onClick={() => setQty(line.id, line.color, line.qty - 1)}
-                          aria-label={`Decrease quantity of ${product.name}`}
+                          aria-label={`کاهش تعداد ${product.name}`}
                         >
                           <Icon name="minus" size={13} />
                         </button>
-                        <span>{line.qty}</span>
+                        <span>{faNum(line.qty)}</span>
                         <button
                           type="button"
                           onClick={() => setQty(line.id, line.color, line.qty + 1)}
-                          aria-label={`Increase quantity of ${product.name}`}
+                          aria-label={`افزایش تعداد ${product.name}`}
                         >
                           <Icon name="plus" size={13} />
                         </button>
@@ -118,45 +118,45 @@ export function CartPage() {
 
               <div className="cart__continue">
                 <ButtonLink href="/shop" variant="ghost" size="sm" icon="arrow-right">
-                  Continue shopping
+                  ادامه خرید
                 </ButtonLink>
               </div>
             </div>
 
-            <aside className="cart__summary" aria-label="Order summary">
-              <h2 className="cart__summary-title">Summary</h2>
+            <aside className="cart__summary" aria-label="خلاصه سفارش">
+              <h2 className="cart__summary-title">خلاصه سفارش</h2>
               <div className="summary-row">
-                <span>Subtotal</span>
+                <span>جمع کالاها</span>
                 <span>{money(subtotal)}</span>
               </div>
               <div className="summary-row">
-                <span>Shipping</span>
-                <span>{shipping === 0 ? 'Complimentary' : money(shipping)}</span>
+                <span>ارسال</span>
+                <span>{shipping === 0 ? 'رایگان' : money(shipping)}</span>
               </div>
               <div className="summary-row">
-                <span>Estimated tax</span>
-                <span>Calculated at checkout</span>
+                <span>مالیات</span>
+                <span>در مرحله پرداخت محاسبه می‌شود</span>
               </div>
               <div className="summary-row summary-row--total">
-                <span>Total</span>
+                <span>مبلغ نهایی</span>
                 <span>{money(total)}</span>
               </div>
               <Button fullWidth size="lg" onClick={() => navigate('/checkout')}>
-                Checkout
+                ادامه پرداخت
               </Button>
               <p className="cart__note">
-                <Icon name="shield" size={15} /> Secure checkout · 30-day returns
+                <Icon name="shield" size={15} /> پرداخت امن · بازگشت ۳۰ روزه
               </p>
               <div className="ship-meter">
                 <p>
-                  {subtotal >= 99
-                    ? 'Complimentary shipping unlocked.'
-                    : `${money(99 - subtotal)} away from complimentary shipping.`}
+                  {subtotal >= FREE_SHIPPING_THRESHOLD
+                    ? 'ارسال رایگان برای سفارش شما فعال شد.'
+                    : `${money(FREE_SHIPPING_THRESHOLD - subtotal)} تا ارسال رایگان باقی مانده.`}
                 </p>
                 <span className="ship-meter__track">
                   <span
                     className="ship-meter__fill"
-                    style={{ width: `${Math.min(100, (subtotal / 99) * 100)}%` }}
+                    style={{ width: `${Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100)}%` }}
                   />
                 </span>
               </div>
@@ -168,8 +168,8 @@ export function CartPage() {
       {recommended.length > 0 && (
         <section className="section section--cream">
           <div className="container">
-            <p className="eyebrow">You may also love</p>
-            <h2 className="section-head__title">Complete the room</h2>
+            <p className="eyebrow">شاید این‌ها را هم دوست داشته باشی</p>
+            <h2 className="section-head__title">اتاق را کامل کن</h2>
             <ProductGrid products={recommended} />
           </div>
         </section>

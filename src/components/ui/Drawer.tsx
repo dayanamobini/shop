@@ -9,7 +9,8 @@ type DrawerProps = {
   eyebrow?: string
   children: ReactNode
   footer?: ReactNode
-  side?: 'right' | 'left'
+  /** `start` is the right edge in RTL, `end` the left edge. */
+  side?: 'start' | 'end'
   wide?: boolean
 }
 
@@ -20,7 +21,7 @@ export function Drawer({
   eyebrow,
   children,
   footer,
-  side = 'right',
+  side = 'end',
   wide,
 }: DrawerProps) {
   useBodyLock(open)
@@ -42,12 +43,7 @@ export function Drawer({
             {eyebrow && <p className="eyebrow">{eyebrow}</p>}
             <h2 className="drawer__title">{title}</h2>
           </div>
-          <button
-            type="button"
-            className="icon-btn"
-            onClick={onClose}
-            aria-label={`Close ${title.toLowerCase()}`}
-          >
+          <button type="button" className="icon-btn" onClick={onClose} aria-label="بستن">
             <Icon name="close" />
           </button>
         </header>

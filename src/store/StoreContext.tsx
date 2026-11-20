@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import { getProductById, type Product } from '../data/products'
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_COST } from '../lib/commerce'
 import { usePersistentState } from '../lib/hooks'
 
 export type CartLine = { id: string; qty: number; color: string }
@@ -84,7 +85,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         }
         return [...current, { id: product.id, qty, color }]
       })
-      notify(`${product.name} added to your cart.`, color)
+      notify(`${product.name} به سبد خرید اضافه شد.`, color)
     },
     [notify, setCart],
   )
@@ -124,7 +125,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       const product = getProductById(id)
       if (product) {
         notify(
-          isSaved ? `${product.name} removed from your wishlist.` : `${product.name} saved for later.`,
+          isSaved
+            ? `${product.name} از علاقه‌مندی‌ها حذف شد.`
+            : `${product.name} به علاقه‌مندی‌ها اضافه شد.`,
         )
       }
       return !isSaved
@@ -147,7 +150,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       const product = getProductById(line.id)
       return sum + (product ? product.price * line.qty : 0)
     }, 0)
-    const ship = sub === 0 || sub >= 99 ? 0 : 9
+    const ship = sub === 0 || sub >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST
     return { cartCount: count, subtotal: sub, shipping: ship, total: sub + ship }
   }, [cart])
 

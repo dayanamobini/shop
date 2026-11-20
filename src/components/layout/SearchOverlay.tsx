@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { products } from '../../data/products'
-import { SHOP_CATEGORIES } from '../../data/content'
-import { money } from '../../lib/format'
+import { RECENT_SEARCHES_DEFAULT, SHOP_CATEGORIES } from '../../data/content'
+import { categoryLabel } from '../../data/labels'
+import { faNum, money } from '../../lib/format'
 import { navigate, useBodyLock, useEscape, usePersistentState } from '../../lib/hooks'
 import { useStore } from '../../store/StoreContext'
 import { Icon } from '../ui/Icon'
@@ -12,11 +13,10 @@ const SUGGESTED = ['p-cloud-table-lamp', 'p-orbit-sculpture', 'p-wavy-ceramic-va
 export function SearchOverlay() {
   const { searchOpen, setSearchOpen, addToCart } = useStore()
   const [query, setQuery] = useState('')
-  const [recent, setRecent] = usePersistentState<string[]>('dreamdecor.searches', [
-    'Sculptures',
-    'Cloud lamp',
-    'Blush vases',
-  ])
+  const [recent, setRecent] = usePersistentState<string[]>(
+    'dreamdecor.searches.v2',
+    RECENT_SEARCHES_DEFAULT,
+  )
   const inputRef = useRef<HTMLInputElement>(null)
 
   useBodyLock(searchOpen)
@@ -34,7 +34,13 @@ export function SearchOverlay() {
     if (!term) return []
     return products
       .filter((product) =>
-        [product.name, product.category, product.collection, product.description]
+        [
+          product.name,
+          categoryLabel(product.category),
+          product.category,
+          product.collection,
+          product.description,
+        ]
           .join(' ')
           .toLowerCase()
           .includes(term),
@@ -60,12 +66,12 @@ export function SearchOverlay() {
   }
 
   return (
-    <div className="search-overlay" role="dialog" aria-modal="true" aria-label="Search">
+    <div className="search-overlay" role="dialog" aria-modal="true" aria-label="جست‌وجو">
       <div className="search-overlay__top container">
         <span className="logo logo--dark">
           Dream<span>Décor</span>
         </span>
-        <button type="button" className="icon-btn" onClick={close} aria-label="Close search">
+        <button type="button" className="icon-btn" onClick={close} aria-label="بستن جست‌وجو">
           <Icon name="close" />
         </button>
       </div>
@@ -85,8 +91,8 @@ export function SearchOverlay() {
             ref={inputRef}
             type="search"
             value={query}
-            placeholder="Search sculptures, lamps, vases…"
-            aria-label="Search products"
+            placeholder="دنبال چه چیزی می‌گردید؟"
+            aria-label="جست‌وجوی محصولات"
             onChange={(event) => setQuery(event.target.value)}
           />
           <kbd>ESC</kbd>
@@ -97,9 +103,9 @@ export function SearchOverlay() {
             {recent.length > 0 && (
               <section>
                 <div className="search-overlay__label">
-                  <p className="eyebrow">Recent searches</p>
+                  <p className="eyebrow">جست‌وجوهای اخیر</p>
                   <button type="button" className="link-btn" onClick={() => setRecent([])}>
-                    Clear
+                    پاک کردن
                   </button>
                 </div>
                 <ul className="search-chips">
@@ -115,7 +121,7 @@ export function SearchOverlay() {
             )}
 
             <section>
-              <p className="eyebrow">Popular categories</p>
+              <p className="eyebrow">دسته‌بندی‌های محبوب</p>
               <ul className="search-cats">
                 {SHOP_CATEGORIES.slice(0, 6).map((category) => (
                   <li key={category.name}>
@@ -137,13 +143,15 @@ export function SearchOverlay() {
               <>
                 <p className="eyebrow">
                   {results.length > 0
-                    ? `${results.length} ${results.length === 1 ? 'piece' : 'pieces'} for “${query.trim()}”`
-                    : 'No matches'}
+                    ? `${faNum(results.length)} نتیجه برای «${query.trim()}»`
+                    : 'بدون نتیجه'}
                 </p>
                 {results.length === 0 ? (
                   <div className="search-empty">
-                    <p className="search-empty__title">No pieces found for your search.</p>
-                    <p>Try a material, a room, or a mood — “ceramic”, “lighting”, “warm”.</p>
+                    <p className="search-empty__title">
+                      متأسفانه چیزی مطابق جستجوی شما پیدا نکردیم.
+                    </p>
+                    <p>یک جنس، یک اتاق یا یک حال‌وهوا را امتحان کنید — «سرامیک»، «نورپردازی»، «گرم».</p>
                   </div>
                 ) : (
                   <ul className="search-results">
@@ -168,14 +176,16 @@ export function SearchOverlay() {
                             />
                           </span>
                           <span className="search-result__text">
-                            <span className="search-result__cat">{product.category}</span>
+                            <span className="search-result__cat">
+                              {categoryLabel(product.category)}
+                            </span>
                             <span className="search-result__name">{product.name}</span>
                             <span className="search-result__price">{money(product.price)}</span>
                           </span>
                           <button
                             type="button"
                             className="search-result__add"
-                            aria-label={`Add ${product.name} to cart`}
+                            aria-label={`افزودن ${product.name} به سبد خرید`}
                             onClick={(event) => {
                               event.preventDefault()
                               event.stopPropagation()
@@ -192,7 +202,7 @@ export function SearchOverlay() {
               </>
             ) : (
               <>
-                <p className="eyebrow">You may love</p>
+                <p className="eyebrow">شاید این‌ها را دوست داشته باشید</p>
                 <ul className="search-results">
                   {suggested.map((product) => (
                     <li key={product.id}>
@@ -214,7 +224,9 @@ export function SearchOverlay() {
                           />
                         </span>
                         <span className="search-result__text">
-                          <span className="search-result__cat">{product.category}</span>
+                          <span className="search-result__cat">
+                            {categoryLabel(product.category)}
+                          </span>
                           <span className="search-result__name">{product.name}</span>
                           <span className="search-result__price">{money(product.price)}</span>
                         </span>

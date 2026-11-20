@@ -1,4 +1,5 @@
 import { getProductById, type Product } from '../data/products'
+import { faNum } from '../lib/format'
 import { useStore } from '../store/StoreContext'
 import { Breadcrumbs } from '../components/ui/Breadcrumbs'
 import { ButtonLink } from '../components/ui/Button'
@@ -14,16 +15,16 @@ export function WishlistPage() {
   return (
     <div className="wishlist-page">
       <div className="container">
-        <Breadcrumbs items={[{ label: 'Wishlist' }]} />
+        <Breadcrumbs items={[{ label: 'علاقه‌مندی‌ها' }]} />
         <div className="page-head">
-          <p className="eyebrow">Saved for later</p>
+          <p className="eyebrow">برای بعد ذخیره شده</p>
           <h1 className="page-title">
-            Your <em>Wishlist</em>
+            <em>علاقه‌مندی‌های</em> تو
           </h1>
           <p className="page-sub">
             {saved.length > 0
-              ? `${saved.length} ${saved.length === 1 ? 'piece' : 'pieces'} you’re considering.`
-              : 'A quiet place for the pieces you can’t stop thinking about.'}
+              ? `${faNum(saved.length)} قطعه که در حال فکر کردن به آن‌ها هستی.`
+              : 'هنوز چیزی برای دوست داشتن انتخاب نکرده‌ای.'}
           </p>
         </div>
 
@@ -32,11 +33,11 @@ export function WishlistPage() {
             <span className="empty__icon">
               <Icon name="heart" size={28} />
             </span>
-            <p className="empty__title">Your wishlist is waiting for something beautiful.</p>
+            <p className="empty__title">هنوز چیزی برای دوست داشتن انتخاب نکرده‌ای.</p>
             <p className="empty__text">
-              Tap the heart on any piece to keep it here while you decide.
+              روی قلب هر قطعه بزن تا تا زمانی که تصمیم می‌گیری، اینجا بماند.
             </p>
-            <ButtonLink href="/shop">Discover the collection</ButtonLink>
+            <ButtonLink href="/shop">دیدن مجموعه</ButtonLink>
           </div>
         ) : (
           <ProductGrid products={saved} />

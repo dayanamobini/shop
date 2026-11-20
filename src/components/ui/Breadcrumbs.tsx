@@ -4,7 +4,7 @@ type Crumb = { label: string; href?: string }
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
-    <nav className="crumbs" aria-label="Breadcrumb">
+    <nav className="crumbs" aria-label="مسیر صفحه">
       <ol>
         <li>
           <a
@@ -14,7 +14,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
               navigate('/')
             }}
           >
-            Home
+            خانه
           </a>
         </li>
         {items.map((item) => (

@@ -1,13 +1,19 @@
-const currency = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  maximumFractionDigits: 0,
+const numberFormat = new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 0 })
+
+const decimalFormat = new Intl.NumberFormat('fa-IR', {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1,
 })
 
-export const money = (value: number) => currency.format(value)
+/** Groups a number with Persian digits. */
+export const faNum = (value: number) => numberFormat.format(value)
 
-export const plural = (count: number, singular: string, pluralForm?: string) =>
-  `${count} ${count === 1 ? singular : pluralForm ?? `${singular}s`}`
+/** One decimal place, Persian digits — used for ratings. */
+export const faDecimal = (value: number) => decimalFormat.format(value)
+
+/** Prices are stored in Toman and always shown with Persian digits. */
+export const money = (value: number) =>
+  `${numberFormat.format(Math.round(value))}\u00A0تومان`
 
 export const slugify = (value: string) =>
   value

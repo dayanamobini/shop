@@ -12,8 +12,9 @@ export function ProductCarousel({ products }: { products: Product[] }) {
   const update = useCallback(() => {
     const el = track.current
     if (!el) return
-    setAtStart(el.scrollLeft <= 4)
-    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4)
+    const offset = Math.abs(el.scrollLeft)
+    setAtStart(offset <= 4)
+    setAtEnd(offset + el.clientWidth >= el.scrollWidth - 4)
   }, [])
 
   useEffect(() => {
@@ -28,10 +29,13 @@ export function ProductCarousel({ products }: { products: Product[] }) {
     }
   }, [update])
 
+  /** In RTL the browser scrolls to the left with negative offsets. */
   const move = (direction: 1 | -1) => {
     const el = track.current
     if (!el) return
-    el.scrollBy({ left: direction * Math.max(el.clientWidth * 0.82, 280), behavior: 'smooth' })
+    const rtl = getComputedStyle(el).direction === 'rtl'
+    const step = Math.max(el.clientWidth * 0.82, 280)
+    el.scrollBy({ left: direction * step * (rtl ? -1 : 1), behavior: 'smooth' })
   }
 
   return (
@@ -48,7 +52,7 @@ export function ProductCarousel({ products }: { products: Product[] }) {
         className="carousel__arrow carousel__arrow--prev"
         onClick={() => move(-1)}
         disabled={atStart}
-        aria-label="Previous products"
+        aria-label="محصولات قبلی"
       >
         <Icon name="chevron-left" />
       </button>
@@ -57,7 +61,7 @@ export function ProductCarousel({ products }: { products: Product[] }) {
         className="carousel__arrow carousel__arrow--next"
         onClick={() => move(1)}
         disabled={atEnd}
-        aria-label="Next products"
+        aria-label="محصولات بعدی"
       >
         <Icon name="chevron-right" />
       </button>

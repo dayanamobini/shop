@@ -7,14 +7,14 @@ export function CollectionsSection() {
     <section className="section collections" aria-labelledby="collections-title">
       <div className="container">
         <SectionHeading
-          eyebrow="Curated collections"
+          eyebrow="کالکشن‌های منتخب"
           title={
             <span id="collections-title">
-              Five Ways to <em>Live Beautifully</em>
+              پنج راه برای <em>زندگی زیبا</em>
             </span>
           }
-          copy="Edits built around a feeling rather than a category — so a room comes together instead of accumulating."
-          action={{ label: 'All collections', href: '/collections' }}
+          copy="مجموعه‌هایی که حول یک احساس ساخته شده‌اند، نه یک دسته‌بندی؛ تا اتاق شکل بگیرد، نه اینکه فقط پر شود."
+          action={{ label: 'همه کالکشن‌ها', href: '/collections' }}
         />
 
         <div className="collections__grid">

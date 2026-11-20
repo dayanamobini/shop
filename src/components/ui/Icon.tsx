@@ -201,12 +201,15 @@ const paths: Record<IconName, ReactElement> = {
   ),
 }
 
+/** Directional icons are mirrored so arrows point the RTL way. */
+const MIRRORED: IconName[] = ['arrow-right', 'arrow-up-right', 'chevron-left', 'chevron-right', 'return']
+
 type IconProps = SVGProps<SVGSVGElement> & {
   name: IconName
   size?: number
 }
 
-export function Icon({ name, size = 20, ...props }: IconProps) {
+export function Icon({ name, size = 20, className, ...props }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -219,6 +222,9 @@ export function Icon({ name, size = 20, ...props }: IconProps) {
       strokeLinejoin="round"
       aria-hidden="true"
       focusable="false"
+      className={['icon', MIRRORED.includes(name) ? 'icon--flip' : '', className]
+        .filter(Boolean)
+        .join(' ')}
       {...props}
     >
       {paths[name]}

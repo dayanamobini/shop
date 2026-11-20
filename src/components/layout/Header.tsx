@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { NAV_LINKS } from '../../data/content'
+import { FREE_SHIPPING_THRESHOLD } from '../../lib/commerce'
+import { money } from '../../lib/format'
 import { navigate, useClickOutside, useEscape, usePath, useScrolled } from '../../lib/hooks'
 import { useStore } from '../../store/StoreContext'
 import { Icon } from '../ui/Icon'
@@ -33,9 +35,9 @@ export function Header() {
     <>
       <div className="announce">
         <div className="announce__inner">
-          <span>Complimentary shipping on orders over $99</span>
+          <span>ارسال رایگان برای سفارش‌های بالای {money(FREE_SHIPPING_THRESHOLD)}</span>
           <span className="announce__dot" aria-hidden="true" />
-          <span className="announce__second">New: The Golden Hour Collection</span>
+          <span className="announce__second">جدید: مجموعه‌ی ساعت طلایی</span>
         </div>
       </div>
 
@@ -48,15 +50,15 @@ export function Header() {
               event.preventDefault()
               navigate('/')
             }}
-            aria-label="DreamDécor home"
+            aria-label="دریم‌دکور، صفحه‌ی خانه"
           >
             Dream<span>Décor</span>
           </a>
 
-          <nav className="nav" aria-label="Primary" ref={navRef}>
+          <nav className="nav" aria-label="منوی اصلی" ref={navRef}>
             <ul className="nav__list">
               {NAV_LINKS.map((link) =>
-                link.label === 'Shop' ? (
+                link.href === '/shop' ? (
                   <li
                     key={link.label}
                     className="nav__item nav__item--mega"
@@ -74,7 +76,7 @@ export function Header() {
                       }}
                       onFocus={openMega}
                     >
-                      Shop
+                      {link.label}
                       <Icon name="chevron-down" size={13} />
                     </a>
                   </li>
@@ -102,14 +104,14 @@ export function Header() {
               type="button"
               className="icon-btn"
               onClick={() => setSearchOpen(true)}
-              aria-label="Search products"
+              aria-label="جست‌وجوی محصولات"
             >
               <Icon name="search" />
             </button>
             <a
               href="/wishlist"
               className="icon-btn header-actions__wish"
-              aria-label={`Wishlist${wishlist.length ? `, ${wishlist.length} saved` : ''}`}
+              aria-label={`علاقه‌مندی‌ها${wishlist.length ? `، ${wishlist.length} مورد ذخیره‌شده` : ''}`}
               onClick={(event) => {
                 event.preventDefault()
                 navigate('/wishlist')
@@ -122,7 +124,7 @@ export function Header() {
               type="button"
               className="icon-btn header-actions__cart"
               onClick={() => setCartOpen(true)}
-              aria-label={`Open cart${cartCount ? `, ${cartCount} items` : ''}`}
+              aria-label={`سبد خرید${cartCount ? `، ${cartCount} کالا` : ''}`}
             >
               <Icon name="bag" />
               {cartCount > 0 && <span className="icon-badge icon-badge--wine">{cartCount}</span>}
@@ -131,7 +133,7 @@ export function Header() {
               type="button"
               className="icon-btn header-actions__menu"
               onClick={() => setMenuOpen(true)}
-              aria-label="Open menu"
+              aria-label="باز کردن منو"
             >
               <Icon name="menu" />
             </button>
@@ -141,5 +143,3 @@ export function Header() {
     </>
   )
 }
-
-

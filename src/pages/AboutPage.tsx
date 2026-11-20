@@ -7,59 +7,59 @@ import { Reveal } from '../components/ui/Reveal'
 
 const VALUES = [
   {
-    title: 'Made by hand',
-    copy: 'Every piece passes through a maker’s hands — thrown, carved, woven or finished one at a time.',
+    title: 'ساخته‌شده با دست',
+    copy: 'هر قطعه از دست‌های یک هنرمند می‌گذرد — چرخ‌کاری، تراش، بافت یا پرداخت، یکی‌یکی.',
     icon: 'sparkle' as const,
   },
   {
-    title: 'Chosen slowly',
-    copy: 'We add a handful of pieces each season, and only when they earn their place in a room.',
+    title: 'آهسته انتخاب‌شده',
+    copy: 'هر فصل چند قطعه اضافه می‌کنیم، و تنها وقتی که جای خود را در یک اتاق به دست آورند.',
     icon: 'eye' as const,
   },
   {
-    title: 'Made to last',
-    copy: 'Natural materials, repairable construction, and packaging that leaves nothing behind.',
+    title: 'ساخته‌شده برای ماندن',
+    copy: 'مواد طبیعی، ساختار قابل تعمیر و بسته‌بندی‌ای که چیزی از خود باقی نمی‌گذارد.',
     icon: 'shield' as const,
   },
 ]
 
 const ARTISANS = [
   {
-    name: 'Marta & João',
-    craft: 'Ceramics · Lisbon',
+    name: 'مارتا و ژوآئو',
+    craft: 'سرامیک · لیسبون',
     photo: 'photo-1493106641515-6b5631de4bb9',
-    quote: 'The wobble is where the hand shows. We keep it.',
+    quote: 'کجیِ فرم همان‌جایی است که دست دیده می‌شود. ما نگهش می‌داریم.',
   },
   {
-    name: 'Studio Alba',
-    craft: 'Lighting · Copenhagen',
+    name: 'استودیو آلبا',
+    craft: 'نورپردازی · کپنهاگ',
     photo: 'photo-1540932239986-30128078f3c5',
-    quote: 'Light should feel like weather, not like a fixture.',
+    quote: 'نور باید مثل هوا باشد، نه مثل یک وسیله.',
   },
   {
-    name: 'Yasmine B.',
-    craft: 'Textiles · Marrakech',
+    name: 'یاسمین ب.',
+    craft: 'منسوجات · مراکش',
     photo: 'photo-1611489704434-2612dc89c992',
-    quote: 'A loom is patient. We learned to be patient too.',
+    quote: 'دارِ بافندگی صبور است. ما هم یاد گرفتیم صبور باشیم.',
   },
 ]
 
 const FAQS = [
   {
-    q: 'How long does delivery take?',
-    a: 'Standard delivery arrives in 2–4 business days and is complimentary on orders over $99. Express delivery arrives the next business day before noon.',
+    q: 'ارسال چقدر طول می‌کشد؟',
+    a: 'ارسال استاندارد در ۲ تا ۴ روز کاری می‌رسد و برای سفارش‌های بالای ۲ میلیون تومان رایگان است. ارسال فوری روز کاری بعد، پیش از ظهر تحویل می‌شود.',
   },
   {
-    q: 'What is your returns policy?',
-    a: 'Return anything within 30 days in its original condition for a full refund. We cover the return shipping on damaged or incorrect items.',
+    q: 'شرایط بازگشت کالا چیست؟',
+    a: 'تا ۳۰ روز می‌توانید هر کالایی را در وضعیت اولیه بازگردانید و مبلغ کامل را دریافت کنید. هزینه‌ی بازگشت کالاهای آسیب‌دیده یا اشتباه با ماست.',
   },
   {
-    q: 'Are the pieces truly handmade?',
-    a: 'Yes. Small variations in glaze, grain and shape are part of the process and are never considered defects.',
+    q: 'آیا قطعات واقعاً دست‌ساز هستند؟',
+    a: 'بله. تفاوت‌های کوچک در لعاب، رگه‌ی چوب و فرم، بخشی از فرآیند است و هرگز نقص محسوب نمی‌شود.',
   },
   {
-    q: 'Do you ship internationally?',
-    a: 'We ship to 24 countries. Duties and taxes are calculated at checkout so there are no surprises on arrival.',
+    q: 'به خارج از کشور ارسال می‌کنید؟',
+    a: 'به ۲۴ کشور ارسال داریم. عوارض و مالیات در مرحله‌ی پرداخت محاسبه می‌شود تا در تحویل غافلگیر نشوید.',
   },
 ]
 
@@ -67,7 +67,7 @@ export function AboutPage() {
   return (
     <div className="about">
       <div className="container">
-        <Breadcrumbs items={[{ label: 'About' }]} />
+        <Breadcrumbs items={[{ label: 'درباره ما' }]} />
       </div>
 
       <section className="about-hero">
@@ -75,32 +75,31 @@ export function AboutPage() {
           <Reveal className="about-hero__media">
             <Img
               photo={PHOTO.aboutBanner}
-              alt="The DreamDécor studio, with objects laid out on a long table"
+              alt="استودیوی دریم‌دکور با اشیائی که روی میزی بلند چیده شده‌اند"
               sizes="(max-width: 767px) 92vw, 50vw"
               ratio={[4, 5]}
               eager
             />
             <span className="about-hero__stamp" aria-hidden="true">
-              <span>DreamDécor</span>
-              <span>Lisbon · 2014</span>
+              <span>دریم‌دکور</span>
+              <span>لیسبون · ۱۳۹۳</span>
             </span>
           </Reveal>
           <Reveal className="about-hero__copy" delay={0.08}>
-            <p className="eyebrow">About DreamDécor</p>
+            <p className="eyebrow">درباره دریم‌دکور</p>
             <h1 className="page-title">
-              Objects With a <em>Story</em>
+              اشیایی با یک <em>داستان</em>
             </h1>
             <p className="page-sub">
-              We curate artistic, functional and emotionally meaningful pieces for modern homes —
-              made by people we know, in places we’ve been.
+              ما قطعاتی هنری، کاربردی و سرشار از احساس را برای خانه‌های مدرن انتخاب می‌کنیم —
+              ساخته‌شده به دست کسانی که می‌شناسیم، در جاهایی که بوده‌ایم.
             </p>
             <p className="about-hero__text">
-              DreamDécor began in a small Lisbon apartment with one rule: only keep what you would
-              notice if it were gone. Ten years later, that rule still decides everything we make,
-              stock and ship.
+              دریم‌دکور در آپارتمانی کوچک در لیسبون و با یک قاعده شروع شد: فقط چیزی را نگه دار که
+              اگر نبود، جایش را حس می‌کردی. ده سال بعد، همان قاعده هنوز همه‌چیز را تعیین می‌کند.
             </p>
             <ButtonLink href="#artisans" variant="outline" icon="arrow-right">
-              Meet the artisans
+              آشنایی با هنرمندان
             </ButtonLink>
           </Reveal>
         </div>
@@ -110,9 +109,9 @@ export function AboutPage() {
         <div className="container">
           <Reveal className="section-head">
             <div className="section-head__text">
-              <p className="eyebrow">What we believe</p>
+              <p className="eyebrow">آنچه باور داریم</p>
               <h2 className="section-head__title" id="values-title">
-                Slow, Considered, <em>Human</em>
+                آهسته، اندیشیده، <em>انسانی</em>
               </h2>
             </div>
           </Reveal>
@@ -134,9 +133,9 @@ export function AboutPage() {
         <div className="container">
           <Reveal className="section-head">
             <div className="section-head__text">
-              <p className="eyebrow">The makers</p>
+              <p className="eyebrow">سازندگان</p>
               <h2 className="section-head__title" id="artisans-title">
-                Hands Behind the <em>Objects</em>
+                دست‌های پشت <em>اشیاء</em>
               </h2>
             </div>
           </Reveal>
@@ -153,7 +152,7 @@ export function AboutPage() {
                 </div>
                 <p className="artisan__craft">{artisan.craft}</p>
                 <h3 className="artisan__name">{artisan.name}</h3>
-                <p className="artisan__quote">“{artisan.quote}”</p>
+                <p className="artisan__quote">«{artisan.quote}»</p>
               </article>
             ))}
           </div>
@@ -161,15 +160,15 @@ export function AboutPage() {
       </section>
 
       <section className="section section--cream" id="shipping" aria-labelledby="faq-title">
+        <span id="faq" aria-hidden="true" />
         <div className="container about__faq">
           <Reveal className="about__faq-copy">
-            <p className="eyebrow">Help & information</p>
+            <p className="eyebrow">راهنما و اطلاعات</p>
             <h2 className="section-head__title" id="faq-title">
-              Good to <em>Know</em>
+              خوب است <em>بدانی</em>
             </h2>
             <p className="page-sub">
-              Shipping, returns and the small details. Anything else — we’re at
-              hello@dreamdecor.studio.
+              ارسال، بازگشت و جزئیات کوچک. هر پرسش دیگری — به hello@dreamdecor.studio ایمیل بزن.
             </p>
           </Reveal>
           <div className="acc-list">
@@ -190,25 +189,25 @@ export function AboutPage() {
       <section className="section about__contact" id="contact" aria-labelledby="contact-title">
         <div className="container about__contact-inner">
           <Reveal>
-            <p className="eyebrow">Say hello</p>
+            <p className="eyebrow">سلام بگو</p>
             <h2 className="section-head__title" id="contact-title">
-              We’d love to <em>hear from you</em>
+              دوست داریم از تو <em>بشنویم</em>
             </h2>
             <p className="page-sub">
-              Studio visits by appointment, Tuesday to Friday, in Lisbon’s Príncipe Real.
+              بازدید از استودیو با هماهنگی قبلی، سه‌شنبه تا جمعه، در محله‌ی پرینسیپه‌ریال لیسبون.
             </p>
             <div className="about__contact-lines">
               <a href="mailto:hello@dreamdecor.studio">hello@dreamdecor.studio</a>
-              <a href="tel:+351210000000">+351 21 000 0000</a>
+              <a href="tel:+351210000000" dir="ltr">+351 21 000 0000</a>
               <span>Rua das Flores 24, 1200-195 Lisboa</span>
             </div>
           </Reveal>
           <Reveal className="about__contact-card" delay={0.08}>
-            <p className="eyebrow">Studio hours</p>
-            <p>Tuesday – Friday · 10:00 – 18:00</p>
-            <p>Saturday · 11:00 – 16:00</p>
+            <p className="eyebrow">ساعت‌های استودیو</p>
+            <p>سه‌شنبه تا جمعه · ۱۰:۰۰ تا ۱۸:۰۰</p>
+            <p>شنبه · ۱۱:۰۰ تا ۱۶:۰۰</p>
             <ButtonLink href="/shop" variant="outline" size="sm" icon="arrow-right">
-              Shop the collection
+              دیدن مجموعه
             </ButtonLink>
           </Reveal>
         </div>

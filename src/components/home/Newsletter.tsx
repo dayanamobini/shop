@@ -15,13 +15,12 @@ export function Newsletter() {
       <div className="container">
         <Reveal className="newsletter__panel">
           <div className="newsletter__copy">
-            <p className="eyebrow eyebrow--light">The Sunday Edit</p>
+            <p className="eyebrow eyebrow--light">خبرنامه‌ی یکشنبه</p>
             <h2 className="newsletter__title" id="newsletter-title">
-              Stay in the <em>Loop</em>
+              در جریان <em>زیبایی‌ها</em> باش
             </h2>
             <p className="newsletter__text">
-              Get décor inspiration, new arrivals and exclusive offers — one considered email a
-              week.
+              برای دریافت ایده‌های دکوراسیون، محصولات جدید و پیشنهادهای ویژه ایمیلت را وارد کن.
             </p>
             <form
               className="newsletter__form"
@@ -30,29 +29,27 @@ export function Newsletter() {
                 if (!email.trim()) return
                 setDone(true)
                 setEmail('')
-                notify('Welcome to the list.', 'Your first Sunday Edit is on its way.')
+                notify('به فهرست ما خوش آمدید.', 'اولین خبرنامه‌ی یکشنبه در راه است.')
               }}
             >
               <label className="sr-only" htmlFor="newsletter-email">
-                Email address
+                نشانی ایمیل
               </label>
               <input
                 id="newsletter-email"
                 type="email"
                 required
-                placeholder="Enter your email"
+                placeholder="ایمیل خود را وارد کنید"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
               />
               <button type="submit" className="btn btn--light">
-                <span>Subscribe</span>
+                <span>عضویت</span>
                 <Icon name="arrow-right" size={16} />
               </button>
             </form>
             <p className="newsletter__note" role="status">
-              {done
-                ? 'Thank you — you’re on the list.'
-                : 'No noise. Unsubscribe anytime.'}
+              {done ? 'سپاسگزاریم — در فهرست ما هستی.' : 'بدون هیاهو. هر وقت خواستی لغو کن.'}
             </p>
           </div>
 

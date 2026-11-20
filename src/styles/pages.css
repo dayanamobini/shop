@@ -14,8 +14,8 @@
 }
 
 .shop__title {
-  font-size: clamp(40px, 5.4vw, 76px);
-  line-height: 0.98;
+  font-size: clamp(34px, 4.4vw, 62px);
+  line-height: 1.2;
 }
 
 .shop__sub {
@@ -52,8 +52,8 @@
 }
 
 .shop__result-count {
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -74,9 +74,8 @@
   appearance: none;
   border: 0;
   background: transparent;
-  padding: 6px 22px 6px 2px;
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
+  padding: 6px 2px 6px 22px;
+  font-size: 12px;
   text-transform: uppercase;
   color: var(--ink);
   cursor: pointer;
@@ -84,7 +83,7 @@
 
 .sort svg {
   position: absolute;
-  right: 2px;
+  inset-inline-end: 2px;
   pointer-events: none;
   color: var(--muted);
 }
@@ -138,7 +137,7 @@
   padding: 0;
   margin-bottom: 12px;
   font-size: 9.5px;
-  letter-spacing: 0.2em;
+  
   text-transform: uppercase;
   color: var(--rose-deep);
 }
@@ -169,7 +168,7 @@
   padding-top: 18px;
   border-top: 1px solid rgba(43, 34, 36, 0.12);
   font-size: 11px;
-  letter-spacing: 0.12em;
+  
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -257,19 +256,19 @@
 .pdp__badge {
   position: absolute;
   top: 18px;
-  left: 18px;
+  inset-inline-start: 18px;
   padding: 7px 14px;
   border-radius: 999px;
   background: rgba(255, 249, 245, 0.94);
   color: var(--wine);
   font-size: 9.5px;
-  letter-spacing: 0.16em;
+  
   text-transform: uppercase;
 }
 
 .pdp__zoom {
   position: absolute;
-  right: 16px;
+  inset-inline-end: 16px;
   bottom: 16px;
   display: grid;
   place-items: center;
@@ -290,7 +289,7 @@
 
 .pdp__title {
   font-size: clamp(34px, 3.8vw, 56px);
-  line-height: 1;
+  line-height: 1.2;
   margin-bottom: 12px;
 }
 
@@ -303,7 +302,7 @@
 
 .pdp__review-link {
   font-size: 10.5px;
-  letter-spacing: 0.1em;
+  
   text-transform: uppercase;
   color: var(--muted);
   border-bottom: 1px solid rgba(128, 111, 112, 0.4);
@@ -331,7 +330,7 @@
 .pdp__save {
   font-family: var(--sans);
   font-size: 9.5px;
-  letter-spacing: 0.12em;
+  
   text-transform: uppercase;
   padding: 5px 10px;
   border-radius: 999px;
@@ -471,12 +470,12 @@
 .review__name {
   font-family: var(--serif);
   font-size: 20px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .review__loc {
   font-size: 10.5px;
-  letter-spacing: 0.06em;
+  
   color: var(--muted);
   margin-top: 3px;
 }
@@ -484,7 +483,7 @@
 .review__title {
   margin: 12px 0 6px;
   font-size: 12px;
-  letter-spacing: 0.06em;
+  
   text-transform: uppercase;
 }
 
@@ -513,17 +512,18 @@
   display: grid;
   grid-template-columns: 1fr 130px 90px;
   gap: 18px;
-  padding: 0 0 12px 138px;
+  padding-block-end: 12px;
+  padding-inline-start: 138px;
   border-bottom: 1px solid rgba(43, 34, 36, 0.14);
   font-size: 9.5px;
-  letter-spacing: 0.18em;
+  
   text-transform: uppercase;
   color: var(--muted);
 }
 
 .cart__head span:nth-child(2),
 .cart__head span:nth-child(3) {
-  text-align: right;
+  text-align: end;
 }
 
 .cart__line {
@@ -557,7 +557,7 @@
 
 .cart__cat {
   font-size: 9px;
-  letter-spacing: 0.18em;
+  
   text-transform: uppercase;
   color: var(--rose-deep);
 }
@@ -565,7 +565,7 @@
 .cart__name {
   font-family: var(--serif);
   font-size: 24px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .cart__name:hover {
@@ -590,7 +590,7 @@
 }
 
 .cart__total {
-  text-align: right;
+  text-align: end;
   font-size: 15px;
 }
 
@@ -652,7 +652,7 @@
   gap: clamp(16px, 3vw, 36px);
   margin-top: 22px;
   font-size: 9.5px;
-  letter-spacing: 0.16em;
+  
   text-transform: uppercase;
   color: rgba(128, 111, 112, 0.7);
 }
@@ -701,12 +701,12 @@
 
 .checkout__block-head h2 {
   font-size: 26px;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .checkout__num {
   font-size: 9.5px;
-  letter-spacing: 0.2em;
+  
   color: var(--rose-deep);
 }
 
@@ -781,7 +781,7 @@
 }
 
 .option__price {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-size: 12.5px;
   color: var(--muted);
 }
@@ -854,7 +854,7 @@
 .checkout__line-qty {
   position: absolute;
   top: -6px;
-  right: -6px;
+  inset-inline-end: -6px;
   display: grid;
   place-items: center;
   width: 20px;
@@ -874,7 +874,7 @@
 .checkout__line-name {
   font-family: var(--serif);
   font-size: 17px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .checkout__line-meta {
@@ -883,7 +883,7 @@
 }
 
 .checkout__line-price {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-size: 12.5px;
 }
 
@@ -938,7 +938,7 @@
 .collection-hero__count {
   margin-top: 22px;
   font-size: 10.5px;
-  letter-spacing: 0.16em;
+  
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -999,13 +999,13 @@
   display: block;
   font-family: var(--serif);
   font-size: 18px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .collection-link__tag {
   display: block;
   font-size: 9.5px;
-  letter-spacing: 0.12em;
+  
   text-transform: uppercase;
   color: var(--muted);
   margin-top: 4px;
@@ -1083,7 +1083,7 @@
 
 .chapter__num {
   font-size: 10px;
-  letter-spacing: 0.22em;
+  
   color: var(--rose-deep);
 }
 
@@ -1137,7 +1137,7 @@
 .story-card__title {
   font-family: var(--serif);
   font-size: clamp(22px, 2.2vw, 30px);
-  line-height: 1.12;
+  line-height: 1.2;
 }
 
 .story-card__excerpt {
@@ -1149,7 +1149,7 @@
 .story-card__cta {
   margin-top: 4px;
   font-size: 10px;
-  letter-spacing: 0.14em;
+  
   text-transform: uppercase;
   color: var(--wine);
 }
@@ -1178,7 +1178,7 @@
 
 .about-hero__stamp {
   position: absolute;
-  left: clamp(-16px, -2vw, -8px);
+  inset-inline-start: clamp(-16px, -2vw, -8px);
   bottom: clamp(16px, 3vw, 32px);
   display: grid;
   place-items: center;
@@ -1189,7 +1189,7 @@
   background: var(--wine);
   color: var(--cream-soft);
   font-size: 8px;
-  letter-spacing: 0.16em;
+  
   text-transform: uppercase;
 }
 
@@ -1261,7 +1261,7 @@
 
 .artisan__craft {
   font-size: 9.5px;
-  letter-spacing: 0.18em;
+  
   text-transform: uppercase;
   color: var(--rose-deep);
 }
@@ -1404,7 +1404,7 @@
 
   .cart__total {
     grid-column: 2;
-    text-align: left;
+    text-align: start;
   }
 
   .cart__name {
@@ -1468,8 +1468,8 @@
 
   .sticky-buy {
     position: fixed;
-    left: 0;
-    right: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     bottom: 0;
     z-index: 150;
     display: flex;
@@ -1491,7 +1491,7 @@
   .sticky-buy__name {
     font-family: var(--serif);
     font-size: 17px;
-    line-height: 1.1;
+    line-height: 1.2;
   }
 
   .sticky-buy__price {
@@ -1511,7 +1511,7 @@
   }
 
   .shop__tools {
-    margin-left: auto;
+    margin-inline-start: auto;
   }
 
   .values,

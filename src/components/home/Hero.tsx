@@ -14,19 +14,19 @@ export function Hero() {
       <span className="hero__ring" aria-hidden="true" />
       <div className="container hero__inner">
         <div className="hero__copy">
-          <p className="eyebrow hero__eyebrow">Home Décor Store</p>
+          <p className="eyebrow hero__eyebrow">فروشگاه دکوراسیون منزل</p>
           <h1 className="hero__title" id="hero-title">
-            Turn Your Home
+            خانه‌ات را به یک
             <br />
-            Into a <em>Dreamscape</em>
+            <em>رؤیای زیبا</em> تبدیل کن
           </h1>
           <p className="hero__text">
-            Extraordinary décor pieces for extraordinary living — hand-thrown, hand-woven, and
-            chosen one at a time.
+            انتخابی از زیباترین عناصر دکوراسیون برای ساختن فضایی خاص و منحصربه‌فرد — دست‌ساز،
+            آهسته و یکی‌یکی انتخاب‌شده.
           </p>
           <div className="hero__ctas">
             <ButtonLink href="/shop" size="lg" icon="arrow-right">
-              Shop the Collection
+              مشاهده مجموعه
             </ButtonLink>
             <button
               type="button"
@@ -38,7 +38,7 @@ export function Hero() {
               <span className="hero__play">
                 <Icon name="play" size={13} />
               </span>
-              Watch Story
+              تماشای داستان
             </button>
           </div>
           <div className="hero__proof">
@@ -48,7 +48,7 @@ export function Hero() {
               <span style={{ backgroundImage: `url(${'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=70'})` }} />
             </div>
             <p>
-              <strong>4.9 / 5</strong> from 2,480 homes
+              <strong>۴٫۹ از ۵</strong> از ۲٬۴۸۰ خانه
             </p>
           </div>
         </div>
@@ -57,7 +57,7 @@ export function Hero() {
           <figure className="hero__main">
             <Img
               photo={PHOTO.hero}
-              alt="A softly lit living room styled with sculptural décor, an arched mirror and warm cream textiles"
+              alt="اتاق نشیمنی با نور ملایم، دکور مجسمه‌وار، آینه‌ی طاق‌دار و منسوجات کرم گرم"
               sizes="(max-width: 767px) 92vw, (max-width: 1199px) 52vw, 620px"
               ratio={[4, 5]}
               eager
@@ -67,12 +67,12 @@ export function Hero() {
           <figure className="hero__float">
             <Img
               photo={PHOTO.heroFloat}
-              alt="A hand-thrown ceramic vase on a marble plinth"
+              alt="گلدان سرامیکی دست‌ساز روی پایه‌ای سنگی"
               sizes="180px"
               ratio={[3, 4]}
               widths={[240, 400, 600]}
             />
-            <figcaption>Hand-thrown</figcaption>
+            <figcaption>دست‌ساز</figcaption>
           </figure>
 
           <a
@@ -83,10 +83,10 @@ export function Hero() {
               navigate('/collections/golden-hour')
             }}
           >
-            <p className="eyebrow">This season</p>
-            <p className="hero__card-title">The Golden Hour</p>
+            <p className="eyebrow">این فصل</p>
+            <p className="hero__card-title">ساعت طلایی</p>
             <span className="hero__card-link">
-              Explore the edit <Icon name="arrow-right" size={14} />
+              مشاهده کالکشن <Icon name="arrow-right" size={14} />
             </span>
           </a>
 
@@ -100,7 +100,7 @@ export function Hero() {
               </defs>
               <text>
                 <textPath href="#sealPath">
-                  HANDCRAFTED · SINCE 2014 · SLOW MADE · HANDCRAFTED · SINCE 2014 ·
+                  دست‌ساز · از ۱۳۹۳ · آهسته ساخته‌شده · دست‌ساز · از ۱۳۹۳ ·
                 </textPath>
               </text>
             </svg>

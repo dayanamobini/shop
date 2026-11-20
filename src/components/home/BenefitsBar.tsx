@@ -3,7 +3,7 @@ import { Icon } from '../ui/Icon'
 
 export function BenefitsBar() {
   return (
-    <section className="benefits" aria-label="Shopping benefits">
+    <section className="benefits" aria-label="مزایای خرید">
       <div className="container benefits__inner">
         {BENEFITS.map((benefit) => (
           <div className="benefit" key={benefit.title}>

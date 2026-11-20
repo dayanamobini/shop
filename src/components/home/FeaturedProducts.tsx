@@ -7,14 +7,14 @@ export function FeaturedProducts() {
     <section className="section section--cream featured" aria-labelledby="featured-title">
       <div className="container">
         <SectionHeading
-          eyebrow="Selected by our stylists"
+          eyebrow="انتخاب استایلیست‌های ما"
           title={
             <span id="featured-title">
-              Artful Pieces for <em>Modern Living</em>
+              قطعات هنری برای <em>زندگی مدرن</em>
             </span>
           }
-          copy="Four objects we return to again and again — each one chosen for how it makes an ordinary room feel considered."
-          action={{ label: 'View all pieces', href: '/shop' }}
+          copy="چهار قطعه که دوباره و دوباره به آن‌ها برمی‌گردیم؛ هرکدام انتخاب شده‌اند برای اینکه یک اتاق معمولی را اندیشیده‌شده نشان دهند."
+          action={{ label: 'مشاهده همه محصولات', href: '/shop' }}
         />
         <ProductGrid products={featuredProducts} />
       </div>

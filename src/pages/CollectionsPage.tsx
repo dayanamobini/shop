@@ -7,14 +7,14 @@ export function CollectionsPage() {
   return (
     <div className="collections-page">
       <div className="container">
-        <Breadcrumbs items={[{ label: 'Collections' }]} />
+        <Breadcrumbs items={[{ label: 'دسته‌بندی‌ها' }]} />
         <Reveal className="page-head">
-          <p className="eyebrow">Curated by DreamDécor</p>
+          <p className="eyebrow">گزیده‌ی دریم‌دکور</p>
           <h1 className="page-title">
-            Collections for <em>Every Mood</em>
+            کالکشن‌هایی برای <em>هر حال‌وهوا</em>
           </h1>
           <p className="page-sub">
-            Five edits, each built around a feeling. Start with one and let the room finish itself.
+            پنج مجموعه، هرکدام حول یک احساس. با یکی شروع کن و بگذار اتاق خودش را کامل کند.
           </p>
         </Reveal>
       </div>

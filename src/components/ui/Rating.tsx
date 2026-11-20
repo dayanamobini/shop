@@ -1,3 +1,4 @@
+import { faDecimal, faNum } from '../../lib/format'
 import { Icon } from './Icon'
 
 type RatingProps = {
@@ -13,7 +14,7 @@ export function Rating({ rating, count, showCount = true, size = 13 }: RatingPro
   return (
     <span
       className="rating"
-      aria-label={`Rated ${rating} out of 5${count ? ` from ${count} reviews` : ''}`}
+      aria-label={`امتیاز ${faDecimal(rating)} از ۵${count ? ` بر اساس ${faNum(count)} نظر` : ''}`}
     >
       <span className="rating__stars" aria-hidden="true">
         {Array.from({ length: 5 }, (_, index) => (
@@ -27,8 +28,8 @@ export function Rating({ rating, count, showCount = true, size = 13 }: RatingPro
       </span>
       {showCount && (
         <span className="rating__meta">
-          {rating.toFixed(1)}
-          {count !== undefined && <span className="rating__count"> ({count})</span>}
+          {faDecimal(rating)}
+          {count !== undefined && <span className="rating__count"> ({faNum(count)})</span>}
         </span>
       )}
     </span>

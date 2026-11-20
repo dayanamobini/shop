@@ -1,4 +1,6 @@
-import { COLLECTIONS } from '../../data/content'
+import { COLLECTIONS, MEGA_MENU } from '../../data/content'
+import { FREE_SHIPPING_THRESHOLD } from '../../lib/commerce'
+import { money } from '../../lib/format'
 import { Img } from '../ui/Img'
 import { ButtonLink } from '../ui/Button'
 
@@ -8,32 +10,22 @@ export function MegaMenu({ onNavigate }: { onNavigate: () => void }) {
     <div className="mega" onMouseLeave={onNavigate}>
       <div className="mega__inner container">
         <div className="mega__cols">
-          <div className="mega__col">
-            <p className="mega__title">Objects</p>
-            <ul className="mega__list">
-              {['Sculptures', 'Vases', 'Decor', 'Mirrors'].map((item) => (
-                <li key={item}>
-                  <a href={`/shop?category=${item}`} onClick={onNavigate}>
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="mega__col">
-            <p className="mega__title">For the Room</p>
-            <ul className="mega__list">
-              {['Furniture', 'Lighting', 'Textiles', 'Wall Art', 'Planters'].map((item) => (
-                <li key={item}>
-                  <a href={`/shop?category=${item}`} onClick={onNavigate}>
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {MEGA_MENU.map((group) => (
+            <div className="mega__col" key={group.title}>
+              <p className="mega__title">{group.title}</p>
+              <ul className="mega__list">
+                {group.links.map((item) => (
+                  <li key={item.label}>
+                    <a href={`/shop?category=${item.category}`} onClick={onNavigate}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
           <div className="mega__col mega__col--soft">
-            <p className="mega__title">Collections</p>
+            <p className="mega__title">کالکشن‌ها</p>
             <ul className="mega__list">
               {COLLECTIONS.slice(0, 4).map((collection) => (
                 <li key={collection.id}>
@@ -44,7 +36,7 @@ export function MegaMenu({ onNavigate }: { onNavigate: () => void }) {
               ))}
               <li>
                 <a href="/collections" onClick={onNavigate}>
-                  All collections
+                  همه‌ی کالکشن‌ها
                 </a>
               </li>
             </ul>
@@ -64,16 +56,16 @@ export function MegaMenu({ onNavigate }: { onNavigate: () => void }) {
             />
           </span>
           <span className="mega__feature-body">
-            <span className="eyebrow">Featured edit</span>
+            <span className="eyebrow">کالکشن منتخب</span>
             <span className="mega__feature-title">{featured.name}</span>
-            <span className="mega__feature-link">Discover →</span>
+            <span className="mega__feature-link">مشاهده</span>
           </span>
         </a>
       </div>
       <div className="mega__footer container">
-        <span>Free shipping on orders over $99</span>
+        <span>ارسال رایگان برای سفارش‌های بالای {money(FREE_SHIPPING_THRESHOLD)}</span>
         <ButtonLink href="/shop" variant="ghost" size="sm" icon="arrow-right">
-          Shop all pieces
+          همه‌ی محصولات
         </ButtonLink>
       </div>
     </div>

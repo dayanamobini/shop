@@ -8,32 +8,32 @@ export function EditorialSection() {
     <section className="editorial" aria-labelledby="editorial-title">
       <div className="container editorial__inner">
         <Reveal className="editorial__copy">
-          <p className="eyebrow">The Lookbook · Vol. 04</p>
+          <p className="eyebrow">لوک‌بوک · شماره ۰۴</p>
           <h2 className="editorial__title" id="editorial-title">
-            Style Beyond
+            سبکی فراتر
             <br />
-            <em>Reality</em>
+            از <em>واقعیت</em>
           </h2>
           <p className="editorial__text">
-            Discover handpicked décor that blends art, emotion, and function. Rooms composed the
-            way a magazine composes a page — slowly, and with feeling.
+            مجموعه‌ای از دکوراسیون‌های خاص که هنر، احساس و کاربرد را در کنار هم قرار می‌دهند. اتاق‌هایی
+            که مثل صفحه‌ی یک مجله چیده می‌شوند — آهسته و با احساس.
           </p>
           <ButtonLink href="/inspiration" size="lg" icon="arrow-right">
-            Explore Lookbook
+            مشاهده کالکشن
           </ButtonLink>
 
           <dl className="editorial__stats">
             <div>
-              <dt>Artisans</dt>
-              <dd>120+</dd>
+              <dt>هنرمندان</dt>
+              <dd>۱۲۰+</dd>
             </div>
             <div>
-              <dt>Countries</dt>
-              <dd>24</dd>
+              <dt>کشورها</dt>
+              <dd>۲۴</dd>
             </div>
             <div>
-              <dt>Avg. rating</dt>
-              <dd>4.9</dd>
+              <dt>میانگین امتیاز</dt>
+              <dd>۴٫۹</dd>
             </div>
           </dl>
         </Reveal>
@@ -43,7 +43,7 @@ export function EditorialSection() {
           <figure className="editorial__arch">
             <Img
               photo={PHOTO.editorial}
-              alt="An editorial living room with curved archways, a sculptural chair and warm afternoon light"
+              alt="اتاق نشیمن ادیتوریال با طاق‌های منحنی، صندلی مجسمه‌وار و نور گرم بعدازظهر"
               sizes="(max-width: 767px) 92vw, (max-width: 1199px) 48vw, 560px"
               ratio={[4, 5]}
             />
@@ -51,14 +51,14 @@ export function EditorialSection() {
           <figure className="editorial__mini">
             <Img
               photo={PHOTO.editorialFloat}
-              alt="A wavy ceramic vase styled with a single dried stem"
+              alt="گلدان سرامیکی مواج با یک شاخه‌ی خشک"
               sizes="150px"
               ratio={[1, 1]}
               widths={[240, 360]}
             />
             <figcaption>
-              <span className="eyebrow">Object No. 12</span>
-              Ivory Arch Vase
+              <span className="eyebrow">شیء شماره ۱۲</span>
+              گلدان طاق عاج
             </figcaption>
           </figure>
         </Reveal>

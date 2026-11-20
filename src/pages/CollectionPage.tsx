@@ -1,5 +1,6 @@
 import { COLLECTIONS } from '../data/content'
 import { products } from '../data/products'
+import { faNum } from '../lib/format'
 import { navigate } from '../lib/hooks'
 import { ProductGrid } from '../components/product/ProductGrid'
 import { Breadcrumbs } from '../components/ui/Breadcrumbs'
@@ -17,7 +18,7 @@ export function CollectionPage({ id }: { id: string }) {
     <div className="collection-page">
       <div className="container">
         <Breadcrumbs
-          items={[{ label: 'Collections', href: '/collections' }, { label: collection.name }]}
+          items={[{ label: 'دسته‌بندی‌ها', href: '/collections' }, { label: collection.name }]}
         />
       </div>
 
@@ -27,7 +28,7 @@ export function CollectionPage({ id }: { id: string }) {
           <h1 className="page-title">{collection.name}</h1>
           <p className="page-sub">{collection.description}</p>
           <p className="collection-hero__count">
-            {items.length} {items.length === 1 ? 'piece' : 'pieces'} in this edit
+            {faNum(items.length)} قطعه در این مجموعه
           </p>
         </div>
         <div className="collection-hero__media">
@@ -41,20 +42,20 @@ export function CollectionPage({ id }: { id: string }) {
         </div>
       </div>
 
-      <section className="section" aria-label={`${collection.name} products`}>
+      <section className="section" aria-label={`محصولات ${collection.name}`}>
         <div className="container">
           {items.length > 0 ? (
             <ProductGrid products={items} />
           ) : (
-            <p className="empty__title">This collection is being composed — check back soon.</p>
+            <p className="empty__title">این مجموعه در حال چیده شدن است — به‌زودی سر بزن.</p>
           )}
         </div>
       </section>
 
       <section className="section section--cream">
         <div className="container">
-          <p className="eyebrow">Keep wandering</p>
-          <h2 className="section-head__title">Other collections</h2>
+          <p className="eyebrow">باز هم بگرد</p>
+          <h2 className="section-head__title">مجموعه‌های دیگر</h2>
           <div className="collection-links">
             {COLLECTIONS.filter((entry) => entry.id !== collection.id).map((entry) => (
               <a
@@ -78,7 +79,7 @@ export function CollectionPage({ id }: { id: string }) {
           </div>
           <div className="section-head__cta">
             <ButtonLink href="/shop" variant="outline" icon="arrow-right">
-              Shop all pieces
+              همه‌ی محصولات
             </ButtonLink>
           </div>
         </div>

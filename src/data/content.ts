@@ -2,11 +2,11 @@ import type { Category, CollectionId } from './products'
 import { PHOTO } from './images'
 
 export const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Shop', href: '/shop' },
-  { label: 'Collections', href: '/collections' },
-  { label: 'Inspiration', href: '/inspiration' },
-  { label: 'About', href: '/about' },
+  { label: 'خانه', href: '/' },
+  { label: 'فروشگاه', href: '/shop' },
+  { label: 'دسته‌بندی‌ها', href: '/collections' },
+  { label: 'مجله دکور', href: '/inspiration' },
+  { label: 'درباره ما', href: '/about' },
 ]
 
 export const SHOP_CATEGORIES: {
@@ -15,13 +15,13 @@ export const SHOP_CATEGORIES: {
   photo: string
   blurb: string
 }[] = [
-  { name: 'Sculptures', target: 'Sculptures', photo: 'photo-1707248985080-954ad8466006', blurb: 'Form, stillness, light' },
-  { name: 'Lighting', target: 'Lighting', photo: 'photo-1540932239986-30128078f3c5', blurb: 'A warmer kind of evening' },
-  { name: 'Vases', target: 'Vases', photo: 'photo-1612196808214-b8e1d6145a8c', blurb: 'For stems and silence' },
-  { name: 'Wall Art', target: 'Wall Art', photo: 'photo-1618220048045-10a6dbdf83e0', blurb: 'Quiet walls, louder rooms' },
-  { name: 'Cushions', target: 'Textiles', photo: 'photo-1611489704434-2612dc89c992', blurb: 'Softness you can sink into' },
-  { name: 'Mirrors', target: 'Mirrors', photo: 'photo-1619378396304-7ef156537d7e', blurb: 'Double the daylight' },
-  { name: 'Planters', target: 'Planters', photo: 'photo-1583078603507-65d00910f610', blurb: 'Living things, beautifully held' },
+  { name: 'مجسمه‌ها', target: 'Sculptures', photo: 'photo-1707248985080-954ad8466006', blurb: 'فرم، سکون، نور' },
+  { name: 'آباژورها', target: 'Lighting', photo: 'photo-1540932239986-30128078f3c5', blurb: 'عصری گرم‌تر' },
+  { name: 'گلدان‌ها', target: 'Vases', photo: 'photo-1612196808214-b8e1d6145a8c', blurb: 'برای ساقه‌ها و سکوت' },
+  { name: 'تابلو و دیوارکوب', target: 'Wall Art', photo: 'photo-1618220048045-10a6dbdf83e0', blurb: 'دیوارِ آرام، اتاقِ پرحرف' },
+  { name: 'کوسن‌ها', target: 'Textiles', photo: 'photo-1611489704434-2612dc89c992', blurb: 'نرمی‌ای که در آن غرق شوی' },
+  { name: 'آینه‌ها', target: 'Mirrors', photo: 'photo-1619378396304-7ef156537d7e', blurb: 'نور روز را دو برابر کن' },
+  { name: 'گلدان و گیاهان', target: 'Planters', photo: 'photo-1583078603507-65d00910f610', blurb: 'جاندار، در آغوشی زیبا' },
 ]
 
 export const MEGA_MENU: {
@@ -29,22 +29,22 @@ export const MEGA_MENU: {
   links: { label: string; category?: Category }[]
 }[] = [
   {
-    title: 'Objects',
+    title: 'اشیاء',
     links: [
-      { label: 'Sculptures', category: 'Sculptures' },
-      { label: 'Vases', category: 'Vases' },
-      { label: 'Decor', category: 'Decor' },
-      { label: 'Mirrors', category: 'Mirrors' },
+      { label: 'مجسمه', category: 'Sculptures' },
+      { label: 'گلدان', category: 'Vases' },
+      { label: 'دکور', category: 'Decor' },
+      { label: 'آینه', category: 'Mirrors' },
     ],
   },
   {
-    title: 'For the Room',
+    title: 'برای اتاق',
     links: [
-      { label: 'Furniture', category: 'Furniture' },
-      { label: 'Lighting', category: 'Lighting' },
-      { label: 'Textiles', category: 'Textiles' },
-      { label: 'Wall Art', category: 'Wall Art' },
-      { label: 'Planters', category: 'Planters' },
+      { label: 'مبلمان', category: 'Furniture' },
+      { label: 'نورپردازی', category: 'Lighting' },
+      { label: 'منسوجات', category: 'Textiles' },
+      { label: 'تابلو و دیوارکوب', category: 'Wall Art' },
+      { label: 'گیاهان', category: 'Planters' },
     ],
   },
 ]
@@ -58,29 +58,29 @@ export const MOODS: {
 }[] = [
   {
     id: 'calm',
-    name: 'Calm',
-    description: 'Soft light, quiet tones, nothing that asks for attention.',
+    name: 'آرام',
+    description: 'نور نرم، رنگ‌های ساکت، هیچ‌چیز که طلب توجه کند.',
     photo: 'photo-1616137466211-f939a420be84',
     href: '/shop?mood=calm',
   },
   {
     id: 'bold',
-    name: 'Bold',
-    description: 'Deep wine, sculptural weight, a room with a point of view.',
+    name: 'جسور',
+    description: 'شرابی عمیق، وزن مجسمه‌وار، اتاقی با یک نظر مشخص.',
     photo: 'photo-1618220179428-22790b461013',
     href: '/shop?mood=bold',
   },
   {
     id: 'artistic',
-    name: 'Artistic',
-    description: 'Collected objects, layered textures, a little unrepeatable.',
+    name: 'هنری',
+    description: 'اشیاء گردآوری‌شده، بافت‌های لایه‌لایه، کمی تکرارنشدنی.',
     photo: 'photo-1484101403633-562f891dc89a',
     href: '/shop?mood=artistic',
   },
   {
     id: 'natural',
-    name: 'Natural',
-    description: 'Raw stone, living green, materials that age gracefully.',
+    name: 'طبیعی',
+    description: 'سنگ خام، سبزی زنده، موادی که زیبا پیر می‌شوند.',
     photo: 'photo-1502672260266-1c1ef2d93688',
     href: '/shop?mood=natural',
   },
@@ -96,84 +96,84 @@ export const COLLECTIONS: {
 }[] = [
   {
     id: 'sculptural',
-    name: 'The Sculptural Edit',
-    tagline: 'Form first',
-    description: 'Objects that hold a room the way a sentence holds a thought.',
+    name: 'مجموعه فرم‌های مجسمه‌ای',
+    tagline: 'فرم، پیش از هر چیز',
+    description: 'اشیائی که یک اتاق را نگه می‌دارند، همان‌گونه که یک جمله یک فکر را.',
     photo: 'photo-1567538096630-e0c55bd6374c',
     size: 'large',
   },
   {
     id: 'soft-living',
-    name: 'Soft Living',
-    tagline: 'Slow afternoons',
-    description: 'Bouclé, linen and rose-toned light for the hours you keep for yourself.',
+    name: 'زندگی نرم و آرام',
+    tagline: 'بعدازظهرهای کند',
+    description: 'بوکله، کتان و نور رزگون برای ساعت‌هایی که برای خودت نگه می‌داری.',
     photo: 'photo-1616486029423-aaa4789e8c9a',
     size: 'standard',
   },
   {
     id: 'modern-rituals',
-    name: 'Modern Rituals',
-    tagline: 'Everyday ceremony',
-    description: 'Candles, bowls and small ceremonies that mark the day.',
+    name: 'آیین‌های مدرن',
+    tagline: 'مراسم روزانه',
+    description: 'شمع‌ها، کاسه‌ها و آیین‌های کوچکی که روز را نشانه‌گذاری می‌کنند.',
     photo: 'photo-1602874801007-bd458bb1b8b6',
     size: 'standard',
   },
   {
     id: 'golden-hour',
-    name: 'Golden Hour',
-    tagline: 'Warm light',
-    description: 'Lighting designed for the last hour of the day.',
+    name: 'ساعت طلایی',
+    tagline: 'نور گرم',
+    description: 'نورپردازی‌هایی برای آخرین ساعت روز.',
     photo: 'photo-1526057565006-20beab8dd2ed',
     size: 'wide',
   },
   {
     id: 'organic-forms',
-    name: 'Organic Forms',
-    tagline: 'Made by hand',
-    description: 'Clay, stone and timber shaped by the people who know them best.',
+    name: 'فرم‌های ارگانیک',
+    tagline: 'ساخته‌ی دست',
+    description: 'خاک، سنگ و چوب؛ فرم‌گرفته به دست کسانی که بهترین شناخت را دارند.',
     photo: 'photo-1565193566173-7a0ee3dbe261',
     size: 'standard',
   },
 ]
 
 export const BENEFITS = [
-  { icon: 'truck' as const, title: 'Free Shipping', text: 'On orders over $99' },
-  { icon: 'return' as const, title: 'Easy Returns', text: '30-day hassle-free returns' },
-  { icon: 'shield' as const, title: 'Secure Checkout', text: 'Your data is protected' },
-  { icon: 'support' as const, title: '24/7 Support', text: 'Always here for you' },
+  { icon: 'truck' as const, title: 'ارسال سریع', text: 'برای سفارش‌های واجد شرایط' },
+  { icon: 'return' as const, title: 'بازگشت آسان', text: 'مهلت ۳۰ روزه بازگشت' },
+  { icon: 'shield' as const, title: 'پرداخت امن', text: 'اطلاعات شما کاملاً محافظت می‌شود' },
+  { icon: 'support' as const, title: 'پشتیبانی', text: 'همیشه در کنار شما هستیم' },
 ]
 
 export const SOCIAL_TILES = [
-  { photo: 'photo-1618220179428-22790b461013', caption: 'Morning light, linen, and a single stem.' },
-  { photo: 'photo-1519710164239-da123dc03ef4', caption: 'The corner that started it all.' },
-  { photo: 'photo-1578500494198-246f612d3b3d', caption: 'Wine tones for the winter months.' },
-  { photo: 'photo-1616137466211-f939a420be84', caption: 'Objects that look better with age.' },
-  { photo: 'photo-1631049307264-da0ec9d70304', caption: 'Soft curves only.' },
-  { photo: 'photo-1618220048045-10a6dbdf83e0', caption: 'A shelf, styled slowly.' },
-  { photo: 'photo-1484101403633-562f891dc89a', caption: 'Sunday, undisturbed.' },
-  { photo: 'photo-1517705008128-361805f42e86', caption: 'From the Golden Hour collection.' },
+  { photo: 'photo-1618220179428-22790b461013', caption: 'نور صبح، کتان و یک شاخه‌ی تنها.' },
+  { photo: 'photo-1519710164239-da123dc03ef4', caption: 'گوشه‌ای که همه‌چیز از آن شروع شد.' },
+  { photo: 'photo-1578500494198-246f612d3b3d', caption: 'تن‌های شرابی برای ماه‌های سرد.' },
+  { photo: 'photo-1616137466211-f939a420be84', caption: 'اشیائی که با گذر زمان زیباتر می‌شوند.' },
+  { photo: 'photo-1631049307264-da0ec9d70304', caption: 'فقط قوس‌های نرم.' },
+  { photo: 'photo-1618220048045-10a6dbdf83e0', caption: 'قفسه‌ای که آهسته چیده شد.' },
+  { photo: 'photo-1484101403633-562f891dc89a', caption: 'یکشنبه، بی‌مزاحم.' },
+  { photo: 'photo-1517705008128-361805f42e86', caption: 'از مجموعه‌ی ساعت طلایی.' },
 ]
 
 export const LOOKBOOK_CHAPTERS = [
   {
     id: 'chapter-1',
-    number: '01',
-    title: 'The Art of Stillness',
-    copy: 'A room begins with restraint. One object, chosen slowly, says more than a shelf of them.',
+    number: '۰۱',
+    title: 'هنرِ سکون',
+    copy: 'اتاق با خویشتن‌داری آغاز می‌شود. یک شیء که آهسته انتخاب شده، بیش از یک قفسه پر از اشیا می‌گوید.',
     photo: 'photo-1618221195710-dd6b41faaea6',
   },
   {
     id: 'chapter-2',
-    number: '02',
-    title: 'Light as Material',
-    copy: 'We design for the hour before dusk, when a lamp stops being furniture and becomes atmosphere.',
+    number: '۰۲',
+    title: 'نور، به‌عنوان ماده',
+    copy: 'ما برای ساعت پیش از غروب طراحی می‌کنیم؛ زمانی که یک چراغ از مبلمان بودن دست می‌کشد و به فضا تبدیل می‌شود.',
     photo: 'photo-1616486029423-aaa4789e8c9a',
   },
   {
     id: 'chapter-3',
-    number: '03',
-    title: 'Made to Be Lived With',
-    copy: 'Hand-thrown, hand-woven, hand-finished. The small imperfections are the point.',
+    number: '۰۳',
+    title: 'ساخته‌شده برای زندگی',
+    copy: 'چرخ‌کاری‌شده، بافته‌شده و پرداخت‌شده با دست. همان ناهماهنگی‌های کوچک، اصل ماجراست.',
     photo: 'photo-1615529182904-14819c35db37',
   },
 ]
@@ -181,36 +181,44 @@ export const LOOKBOOK_CHAPTERS = [
 export const INSPIRATION_STORIES = [
   {
     id: 'story-1',
-    category: 'Interiors',
-    title: 'A Lisbon Apartment Built Around One Arch',
-    excerpt: 'How a single curved doorway organised an entire home — and taught us about restraint.',
+    category: 'دکوراسیون',
+    title: 'چطور فضای خانه را لوکس‌تر کنیم؟',
+    excerpt:
+      'لوکس بودن همیشه درباره‌ی گران بودن نیست؛ درباره‌ی نور، فاصله و انتخاب‌هایی است که آرامش می‌سازند.',
     photo: PHOTO.editorial,
-    read: '6 min read',
+    read: '۶ دقیقه مطالعه',
+    date: '۲۸ آبان ۱۴۰۵',
   },
   {
     id: 'story-2',
-    category: 'Materials',
-    title: 'Why We Still Throw Clay by Hand',
-    excerpt: 'Inside the studio where every vase begins as a lump of earth and a pair of patient hands.',
+    category: 'ایده',
+    title: '۷ ایده برای دکوراسیون مینیمال',
+    excerpt:
+      'از یک شیء در هر سطح تا بازی با بافت‌های هم‌خانواده؛ راه‌هایی ساده برای اتاقی آرام و کامل.',
     photo: 'photo-1612196808214-b8e1d6145a8c',
-    read: '4 min read',
+    read: '۴ دقیقه مطالعه',
+    date: '۱۴ آبان ۱۴۰۵',
   },
   {
     id: 'story-3',
-    category: 'Styling',
-    title: 'The Five-Object Shelf',
-    excerpt: 'A simple rule for styling open shelving without making it look styled.',
+    category: 'نورپردازی',
+    title: 'راهنمای انتخاب نور مناسب برای خانه',
+    excerpt:
+      'دمای رنگ، شدت و ارتفاع؛ سه کلیدی که حال‌وهوای هر اتاق را تعیین می‌کنند.',
     photo: 'photo-1519710164239-da123dc03ef4',
-    read: '3 min read',
+    read: '۵ دقیقه مطالعه',
+    date: '۲ آبان ۱۴۰۵',
   },
   {
     id: 'story-4',
-    category: 'Light',
-    title: 'Living With Warm Light',
-    excerpt: 'Layering three temperatures of light to make an evening feel longer.',
+    category: 'رنگ',
+    title: 'چطور رنگ‌ها را در دکوراسیون ترکیب کنیم؟',
+    excerpt:
+      'از پالت‌های هم‌جوار تا یک لهجه‌ی زرشکی؛ قاعده‌هایی که به چشم آرامش می‌دهند.',
     photo: 'photo-1507473885765-e6ed057f782c',
-    read: '5 min read',
+    read: '۳ دقیقه مطالعه',
+    date: '۱۹ مهر ۱۴۰۵',
   },
 ]
 
-export const RECENT_SEARCHES_DEFAULT = ['Sculptures', 'Cloud lamp', 'Blush vases']
+export const RECENT_SEARCHES_DEFAULT = ['مجسمه', 'چراغ ابر', 'گلدان رز']

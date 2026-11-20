@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { getProductById } from '../../data/products'
-import { money } from '../../lib/format'
+import { categoryLabel } from '../../data/labels'
+import { faNum, money } from '../../lib/format'
 import { useBodyLock, useEscape } from '../../lib/hooks'
 import { useStore } from '../../store/StoreContext'
 import { Img } from './Img'
@@ -30,14 +31,14 @@ export function QuickView() {
         className="quickview"
         role="dialog"
         aria-modal="true"
-        aria-label={`Quick view — ${product.name}`}
+        aria-label={`مشاهده سریع — ${product.name}`}
         onMouseDown={(event) => event.stopPropagation()}
       >
         <button
           type="button"
           className="icon-btn quickview__close"
           onClick={() => setQuickViewId(null)}
-          aria-label="Close quick view"
+          aria-label="بستن مشاهده سریع"
         >
           <Icon name="close" />
         </button>
@@ -50,7 +51,7 @@ export function QuickView() {
           />
         </div>
         <div className="quickview__body">
-          <p className="eyebrow">{product.category}</p>
+          <p className="eyebrow">{categoryLabel(product.category)}</p>
           <h2 className="quickview__title">{product.name}</h2>
           <Rating rating={product.rating} count={product.reviewCount} />
           <p className="quickview__price">
@@ -59,7 +60,7 @@ export function QuickView() {
           </p>
           <p className="quickview__desc">{product.description}</p>
           <div className="quickview__colors">
-            <span className="field-label">Colour · {activeColor}</span>
+            <span className="field-label">رنگ · {activeColor}</span>
             <div className="swatches">
               {product.colors.map((option) => (
                 <button
@@ -79,15 +80,15 @@ export function QuickView() {
               <button
                 type="button"
                 onClick={() => setQty((value) => Math.max(1, value - 1))}
-                aria-label="Decrease quantity"
+                aria-label="کاهش تعداد"
               >
                 <Icon name="minus" size={14} />
               </button>
-              <span aria-live="polite">{qty}</span>
+              <span aria-live="polite">{faNum(qty)}</span>
               <button
                 type="button"
                 onClick={() => setQty((value) => Math.min(99, value + 1))}
-                aria-label="Increase quantity"
+                aria-label="افزایش تعداد"
               >
                 <Icon name="plus" size={14} />
               </button>
@@ -98,20 +99,20 @@ export function QuickView() {
                 setQuickViewId(null)
               }}
             >
-              Add to cart
+              افزودن به سبد
             </Button>
             <button
               type="button"
               className={`wish-btn${isWishlisted(product.id) ? ' is-saved' : ''}`}
               onClick={() => toggleWishlist(product.id)}
-              aria-label="Save to wishlist"
+              aria-label="افزودن به علاقه‌مندی‌ها"
               aria-pressed={isWishlisted(product.id)}
             >
               <Icon name={isWishlisted(product.id) ? 'heart-filled' : 'heart'} />
             </button>
           </div>
           <ButtonLink href={`/product/${product.slug}`} variant="ghost" size="sm" icon="arrow-right">
-            View full details
+            مشاهده جزئیات کامل
           </ButtonLink>
         </div>
       </div>

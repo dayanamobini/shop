@@ -7,6 +7,7 @@ import { EditorialSection } from '../components/home/EditorialSection'
 import { FeaturedProducts } from '../components/home/FeaturedProducts'
 import { Hero } from '../components/home/Hero'
 import { Lookbook } from '../components/home/Lookbook'
+import { Magazine } from '../components/home/Magazine'
 import { MoodSection } from '../components/home/MoodSection'
 import { NewArrivals } from '../components/home/NewArrivals'
 import { Newsletter } from '../components/home/Newsletter'
@@ -25,6 +26,7 @@ export function HomePage() {
       <BestSellers />
       <Lookbook />
       <BrandStory />
+      <Magazine />
       <SocialGallery />
       <Newsletter />
       <BenefitsBar />

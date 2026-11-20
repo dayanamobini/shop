@@ -1,5 +1,7 @@
 import { CATEGORIES, products } from '../../data/products'
-import { money } from '../../lib/format'
+import { categoryLabel } from '../../data/labels'
+import { PRICE_MAX, PRICE_MIN, PRICE_STEP } from '../../lib/commerce'
+import { faNum, money } from '../../lib/format'
 
 type FilterPanelProps = {
   selected: string[]
@@ -30,14 +32,14 @@ export function FilterPanel({
   return (
     <div className="filters">
       <div className="filters__head">
-        <p className="filters__title">Refine</p>
+        <p className="filters__title">پالایش</p>
         <button type="button" className="link-btn" onClick={onClear}>
-          Clear all
+          پاک کردن همه
         </button>
       </div>
 
       <fieldset className="filters__group">
-        <legend>Category</legend>
+        <legend>دسته‌بندی</legend>
         <ul className="filters__checks">
           {counts.map(({ category, count }) => (
             <li key={category}>
@@ -48,8 +50,8 @@ export function FilterPanel({
                   onChange={() => onToggle(category)}
                 />
                 <span className="check__box" aria-hidden="true" />
-                <span className="check__label">{category}</span>
-                <span className="check__count">{count}</span>
+                <span className="check__label">{categoryLabel(category)}</span>
+                <span className="check__count">{faNum(count)}</span>
               </label>
             </li>
           ))}
@@ -57,26 +59,26 @@ export function FilterPanel({
       </fieldset>
 
       <fieldset className="filters__group">
-        <legend>Price</legend>
+        <legend>محدوده قیمت</legend>
         <div className="filters__price">
-          <span>{money(0)}</span>
+          <span>{money(PRICE_MIN)}</span>
           <span>{money(maxPrice)}</span>
         </div>
         <input
           className="range"
           type="range"
-          min={40}
-          max={700}
-          step={10}
+          min={PRICE_MIN}
+          max={PRICE_MAX}
+          step={PRICE_STEP}
           value={maxPrice}
-          aria-label="Maximum price"
+          aria-label="حداکثر قیمت"
           onChange={(event) => onMaxPrice(Number(event.target.value))}
         />
-        <p className="filters__hint">Showing pieces up to {money(maxPrice)}</p>
+        <p className="filters__hint">نمایش محصولات تا {money(maxPrice)}</p>
       </fieldset>
 
       <fieldset className="filters__group">
-        <legend>Availability</legend>
+        <legend>موجودی</legend>
         <label className="check">
           <input
             type="checkbox"
@@ -84,13 +86,11 @@ export function FilterPanel({
             onChange={(event) => onInStockOnly(event.target.checked)}
           />
           <span className="check__box" aria-hidden="true" />
-          <span className="check__label">In stock only</span>
+          <span className="check__label">فقط کالاهای موجود</span>
         </label>
       </fieldset>
 
-      <p className="filters__count">
-        {resultCount} {resultCount === 1 ? 'piece' : 'pieces'}
-      </p>
+      <p className="filters__count">{faNum(resultCount)} محصول</p>
     </div>
   )
 }
